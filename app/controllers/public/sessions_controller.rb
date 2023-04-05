@@ -18,8 +18,17 @@ class Public::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # protected
 
+protected
+
+# 退会しているかを判断するメソッド
+ def user_state
+  @User = User.find_by(email: params[:user][:email])
+  return if !@user
+  if @user.valid_password?(params[:user][:password]) && @user.is_deleted
+  redirect_to user_registration_path
+  end
+ end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])

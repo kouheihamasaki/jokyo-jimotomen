@@ -13,7 +13,7 @@ Rails.application.routes.draw do
  scope module: :public do
    root to: 'homes#top'
    get '/about' => 'homes#about'
-   resources :posts, only: []
+   resources :posts
    resources :communities, only: [:index, :show]
    resource :users,only: [] do #resourceはidとindexをpathから取り除ける
      get 'my_page' => 'users#show'
@@ -24,7 +24,6 @@ Rails.application.routes.draw do
    end
    resources :community_requests,only: [:index, :show,]
  end
-
 
 
 devise_for :users,skip: [:passwords], controllers: {
