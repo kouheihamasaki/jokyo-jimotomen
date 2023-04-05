@@ -1,9 +1,11 @@
 class Public::PostsController < ApplicationController
 
   def index
+    @post = Post.all
   end
   
   def show
+    @post = Post.find(params[:id])
   end
 
   def edit
@@ -24,6 +26,9 @@ class Public::PostsController < ApplicationController
   end
 
   def destroy
+    post_image = Post.find(params[:id])
+    post_image.destroy
+    redirect_to pasts_path
   end
   
   
