@@ -1,7 +1,7 @@
 class Public::PostsController < ApplicationController
 
   def index
-    @post = Post.all
+    @post_all = Post.all
   end
   
   def show
@@ -16,10 +16,14 @@ class Public::PostsController < ApplicationController
   end
 
   def create
-    @Post = Post.new(post_params)
+    @post = Post.new(post_params)
     @post.user_id = current_user.id
-    @post.save
+    @post.post_tag_id = 
+    if @post.save!
     redirect_to posts_path
+    else
+    render :new
+    end
   end
   
   def update
@@ -35,8 +39,8 @@ class Public::PostsController < ApplicationController
   
   private
 
-  def post_image_params
-    params.require(:post_image).permit(:shop_name, :image, :caption)
+  def post_params
+    params.require(:post).permit(:shop_name, :image, :title, :body, :post_tag)
   end
   
 end

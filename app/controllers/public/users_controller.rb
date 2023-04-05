@@ -1,12 +1,11 @@
 class Public::UsersController < ApplicationController
 
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
   end
-  
+
   def show
-    @user = User.find(params[:id])
-    @posts = @user.posts
+    @user = current_user
   end
 
   def update
@@ -17,7 +16,7 @@ class Public::UsersController < ApplicationController
 
   def unsubscribe
   end
-  
+
   def withdraw
   end
 
@@ -27,6 +26,6 @@ class Public::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :profile_image)
   end
-  
-  
+
+
 end

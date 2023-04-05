@@ -1,13 +1,16 @@
-<% @post.each do |post| %>
+
+<h2>投稿一覧</h2>
+
+<% @post_all.each do |post_all| %>
 <div>
-  <%= link_to post_path(post.id) do %>
-   <%= image_tag post.get_image %>
+  <%= link_to post_path(post_all.id) do %>
+   <%= image_tag post_all.get_image %>
   <% end %>
-  <p>投稿ユーザー画像：<%= image_tag post.user.get_profile_image(100,100) %></p>
-  <p>ショップ名：<%= post.shop_name %></p>
-  <p>投稿タイトル：<%= post.title %></p>
-  <p>説明：<%= post.body %></p>
-  <p>ユーザーネーム：<%= post.user.name %></p>
+  <p>投稿ユーザー画像：<%= image_tag post_all.user.get_profile_image(100,100) %></p>
+  <p>ショップ名：<%= post_all.shop_name %></p>
+  <p>投稿タイトル：<%= post_all.title %></p>
+  <p>説明：<%= post_all.body %></p>
+  <p>ユーザーネーム：<%= post_all.user.name %></p>
 </div>
 <% end %>
 
