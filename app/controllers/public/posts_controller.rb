@@ -10,9 +10,14 @@ class Public::PostsController < ApplicationController
   end
   
   def new
+    @post = Post.new
   end
 
   def create
+    @Post = Post.new(post_params)
+    @post.user_id = current_user.id
+    @post.save
+    redirect_to posts_path
   end
   
   def update
@@ -22,5 +27,11 @@ class Public::PostsController < ApplicationController
   end
   
   
+  
+  private
+
+  def post_image_params
+    params.require(:post_image).permit(:shop_name, :image, :caption)
+  end
   
 end
