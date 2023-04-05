@@ -11,7 +11,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.string :first_name_kana,    null: false
       t.string :last_name_kana,     null: false
       t.string :introduction,       null: false
-      t.string :prefecture,         null: false
+      t.integer :prefecture,        null: false, default:"0"
       t.string :fav_noodle,         null: false
       t.boolean :is_deleted,        null: false, default: "false"
       ## Recoverable

@@ -1,29 +1,87 @@
-<h2>Sign up</h2>
+<h2>新規会員登録</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
+<%= form_with model: @user, url: user_registration_path do |f| %>
+<%= render "public/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+ <div class="row mt-3">
+  <p class="col-md-2">名前</p>
+   <div class="col-md-1 text-right">
+    <%= f.label :last_name, "(姓)" %>
+   </div>
+   <div class="col-md-3">
+    <%= f.text_field :last_name, :placeholder => "地元", autofocus: true, required: true, autocomplete: "last_name" %>
+   </div>
+   <div class="col-md-1 text-right">
+    <%= f.label :first_name, "(名)" %>
+   </div>
+   <div class="col-md-4">
+    <%= f.text_field :first_name, :placeholder => "麺子", required: true, autocomplete: "first_name" %>
+   </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+  <div class="row mt-3">
+   <p class="col-md-2">フリガナ</p>
+   <div class="col-md-1 text-right">
+    <%= f.label :last_name_kana, "(セイ)" %>
+   </div>
+   <div class="col-md-3">
+    <%= f.text_field :last_name_kana, :placeholder => "ジモト", required: true, autocomplete: "last_name_kana" %>
+   </div>
+   <div class="col-md-1 text-right">
+    <%= f.label :first_name_kana, "(メイ)" %>
+   </div>
+   <div class="col-md-4">
+    <%= f.text_field :first_name_kana, :placeholder => "メンコ", required: true, autocomplete: "first_name_kana" %>
+   </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="row mt-3">
+    <p class="col-md-3">メールアドレス</p>
+    <div class="field col-md-9">
+      <%= f.email_field :email, :size=>"72",:placeholder => "jokyo-jimotomen@sample.com", required: true, autocomplete: "email" %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="row mt-3">
+    <p class="col-md-3">自己紹介文</p>
+    <div class="field col-md-9">
+      <%= f.text_field :introduction, :size=>"72", :placeholder => "よろしくお願いします！", required: true, autocomplete: "introduction" %>
+    </div>
   </div>
+  
+  <div class="row mt-3">
+    <p class="col-md-3">好きな都道府県</p>
+    <div class="field col-md-9">
+      <%= f.select :prefecture, User.prefectures.keys, {} %>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <p class="col-md-3">押し麺類</p>
+    <div class="field col-md-9">
+      <%= f.text_field :fav_noodle, :placeholder => "博多豚骨ラーメン", required: true, autocomplete: "fav_noodle" %>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <p class="col-md-3">パスワード(6文字以上)</p>
+    <div class="field col-md-9">
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <p class="col-md-3">パスワード(確認用)</p>
+    <div class="field col-md-9">
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+  </div>
+
+  <div class="actions row mt-3">
+    <div class="col-md-3"></div>
+    <div class="field col-md-9 pb-lg-5">
+      <%= f.submit "新規登録", class: "text-dark btn-outline-success btn-lg" %>
+    </div>
+  </div>
+
 <% end %>
-
-<%= render "public/shared/links" %>
