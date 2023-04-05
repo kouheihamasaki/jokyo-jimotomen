@@ -1,0 +1,38 @@
+<div class="container add-font">
+  <h2 class="mt-5">マイページ</h2>
+  <div class="row">
+    <div class="col-12">
+      <div class="field col-md-5 mt-3">
+        <h4>登録情報　 <%= link_to "編集する", information_edit_users_path(@user), class: "btn btn-success" %></h4>
+      </div>
+      <table class="table table-bordered mt-3">
+        <tr>
+          <td class="col-2 table-info">氏名</td>
+          <td><%= @user.last_name %> <%= @user.first_name %></td>
+        </tr>
+        <tr>
+          <td class="table-info">フリガナ</td>
+          <td><%= @user.last_name_kana %> <%= @user.first_name_kana %></td>
+        </tr>
+        <tr>
+          <td class="table-info">自己紹介文</td>
+          <td><%= @user.introduction %></td>
+        </tr>
+        <tr>
+          <td class="table-info">好きな都道府県</td>
+          <td><%= @user.prefecture %></td>
+        </tr>
+        <tr>
+          <td class="table-info">押し麺類</td>
+          <td><%= @user.fav_noodle %></td>
+        </tr>
+        <tr>
+          <td class="table-info">メールアドレス</td>
+          <td><%= @user.email %></td>
+        </tr>
+      </table>
+
+
+    </div>
+  </div>
+</div>
