@@ -16,4 +16,5 @@ class Post < ApplicationRecord
     image
   end
   
-end
+ end
+

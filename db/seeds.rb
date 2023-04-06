@@ -14,3 +14,8 @@ Tag.create([
   { name: 'そば' }
 ])
 
+
+Admin.create!(
+    email: 'jokyo_jimotomen_adomin@gmail.com',
+    password: 'jokyojimotomen',
+)

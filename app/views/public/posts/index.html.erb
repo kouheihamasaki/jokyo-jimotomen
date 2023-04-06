@@ -2,7 +2,7 @@
 <h2>投稿一覧</h2>
 
 <% @post_all.each do |post_all| %>
-<div>
+ <div>
   <%= link_to post_path(post_all.id) do %>
    <%= image_tag post_all.get_image %>
   <% end %>
@@ -10,9 +10,20 @@
   <p>ショップ名：<%= post_all.shop_name %></p>
   <p>投稿タイトル：<%= post_all.title %></p>
   <p>説明：<%= post_all.body %></p>
-  <p>ユーザーネーム：<%= post_all.user.name %></p>
-</div>
+  <p>ユーザーネーム：<%= post_all.user.full_name %></p>
+  <% post_all.tags.each do |tag| %>
+   <span><%= tag.name %></span>
+  <% end %>
+ </div>
 <% end %>
+
+ <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
+  <% Tag.all.each do |t| %>
+   <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
+  <% end %>
+  <%= submit_tag '検索' %>
+ <% end %>
+
 
 
 <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
