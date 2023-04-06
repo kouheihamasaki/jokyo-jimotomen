@@ -15,3 +15,8 @@
 <% end %>
 
 
+<%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
+    <%= text_field_tag :tag %>
+    <%= submit_tag 'タグを追加' %>
+<% end %>
+
