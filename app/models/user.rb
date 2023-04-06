@@ -21,6 +21,10 @@ class User < ApplicationRecord
   
   has_one_attached :profile_image
   
+  def full_name
+    self.last_name + " " + self.first_name
+  end
+  
   
   def get_profile_image(width, height)
   unless profile_image.attached?

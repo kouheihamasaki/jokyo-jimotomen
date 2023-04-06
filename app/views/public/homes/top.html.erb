@@ -1,5 +1,13 @@
-<h2>ここはトップページ</h2>
-
-<div>
- <%= link_to '投稿フォーム', new_post_path %>
-</div>
+<div class="container px-5">
+   <div class="row">
+  <%= render 'sidebar', user: @user %>
+  
+  <div class="col-md-8 offset-md-1">
+   <h2>TOP PAGE</h2>
+   <div>
+    <%= link_to '投稿フォーム', new_post_path %>
+   </div>
+    
+   </div>
+   </div>
+</div
