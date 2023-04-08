@@ -16,7 +16,7 @@ class Admin::CommunitiesController < ApplicationController
   def create
     @community = Community.new(community_params)
     @community.admin_id = current_admin.id
-    if @community.save!
+    if @community.save
       redirect_to admin_community_path(@community)
     else
       render :new

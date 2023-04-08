@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:show, :index, :destroy]
     resources :communities, only: [:index, :show, :new, :create, :edit, :update, :destroy]
     resources :users, only: [:index, :show, :edit, :update]
-    resources :community_requests, only: [:index, :show, :edit, :update]
+    resources :community_reqs, only: [:index, :show, :edit, :update]
     root 'homes#top'
   end
 
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
      get 'unsubscribe' =>'users#unsubscribe'
      patch 'withdraw' => 'users#withdraw'
    end
-   resources :community_requests,only: [:index, :show,]
+   resources :community_reqs,only: [:index, :show,]
  end
 
 

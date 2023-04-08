@@ -8,8 +8,6 @@
    <ul class="navbar-nav mr-auto">
   
   
-  
-  
  <% if admin_signed_in? %>
   <% if request.fullpath.include? "/admin" %>
    <li class="nav-item text-dark">
@@ -19,7 +17,7 @@
     <%= link_to "コミュニティ一覧", admin_communities_path, class: 'btn btn-outline-secondary ml-3 mb-3' %>
    </li>
    <li class="nav-item">
-    <%= link_to "コミュニティリクエスト", admin_community_requests_path, class: 'btn btn-outline-secondary ml-3 mb-3' %>
+    <%= link_to "コミュニティリクエスト", admin_community_reqs_path, class: 'btn btn-outline-secondary ml-3 mb-3' %>
    </li>
    <li class="nav-item">
     <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-secondary ml-3' %>

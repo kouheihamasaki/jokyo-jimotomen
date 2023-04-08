@@ -1,2 +1,7 @@
   ja:
     enums:
+      community_req:
+        update_status:
+          incomplete: "未作成"
+          on_hold: "保留中"
+          complete: "作成済"

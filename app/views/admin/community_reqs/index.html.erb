@@ -1,0 +1,17 @@
+<h2>コミュニティリクエスト一覧</h2>
+
+<% @community_reqs.each do |community_req| %>
+ <div>
+  <p>
+    <%= link_to admin_community_req_path(community_req), class:'text-reset', style:"text-decoration: underline" do %>
+     <%= community_req.title %>
+    <% end %>
+  </p>
+  <p>ステータス：<%= community_req.update_status %></p>
+ </div>
+<% end %>
+
+
+   <div class="col-2 mx-auto">
+    <%= paginate @communities %>
+  </div>

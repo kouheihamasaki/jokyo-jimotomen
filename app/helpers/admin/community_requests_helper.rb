@@ -1,2 +1,0 @@
-module Admin::CommunityRequestsHelper
-end

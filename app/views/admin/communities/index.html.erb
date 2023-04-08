@@ -17,5 +17,5 @@
     <%= paginate @communities %>
   </div>
 
- 
+ <%= link_to "コミュニティリクエスト", admin_community_reqs_path, class: 'btn btn-outline-secondary ml-3 mb-3' %>
  <%= link_to "新しいコミュニティの作成", new_admin_community_path, class: 'btn btn-outline-secondary ml-3 mb-3' %>
