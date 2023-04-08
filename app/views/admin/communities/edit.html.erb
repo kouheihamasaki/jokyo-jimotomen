@@ -1,0 +1,28 @@
+<div class='container add-font'>
+  <div class='row'>
+    <div class="col-md-8 mx-auto my-5">
+      <h3 class="my-5"><mark class="bg-light">コミュニティ編集</mark></h3>
+        <div class="ml-3">
+          <div class="mb-5 px-3">
+          <%= form_with model: @community, url: admin_community_path, method: :patch do |f| %>
+            <div class="row form-group">
+              <h5 class="col-4">コミュニティタイトル</h5>
+              <%= f.text_field :title, required: true, autocomplete: "title", class: "col-7 form-control" %>
+            </div>
+            <div class="row form-group">
+              <h5 class="col-4">対象都道府県</h5>
+              <%= f.text_area :prefecture, required: true, autocomplete: "prefecture",  class: "col-7 form-control" %>
+            </div>
+            <div class="row form-group">
+              <h5 class="col-4">コミュニティの説明</h5>
+              <%= f.text_field :price, required: true, autocomplete: "introduction", class: "col-7 form-control" %>  円
+            </div>
+            <div class="text-center">
+              <%= f.submit '  変更を保存  ', class: "btn btn-outline-success" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

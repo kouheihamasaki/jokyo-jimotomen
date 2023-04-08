@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # 管理側
   namespace :admin do
     resources :posts, only: [:show, :index, :destroy]
-    resources :communities, only: [:index, :show, :new, :create, :edit, :update]
+    resources :communities, only: [:index, :show, :new, :create, :edit, :update, :destroy]
     resources :users, only: [:index, :show, :edit, :update]
     resources :community_requests, only: [:index, :show, :edit, :update]
     root 'homes#top'
