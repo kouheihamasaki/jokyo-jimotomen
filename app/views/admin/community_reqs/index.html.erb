@@ -7,11 +7,11 @@
      <%= community_req.title %>
     <% end %>
   </p>
-  <p>ステータス：<%= community_req.update_status %></p>
+  <p>ステータス：<%= community_req.update_status_i18n %></p>
  </div>
 <% end %>
 
 
    <div class="col-2 mx-auto">
-    <%= paginate @communities %>
+    <%= paginate @community_reqs %>
   </div>

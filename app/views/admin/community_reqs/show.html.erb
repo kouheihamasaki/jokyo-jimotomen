@@ -1,0 +1,8 @@
+<div>
+  <p>コミュニティリクエストタイトル：<%= @community_req.title %></p>
+  <p>コミュニティの説明：<%= @community_req.body %></p>
+  <p>投稿日：<%= @community_req.created_at.strftime('%Y/%m/%d') %></p>
+  <P>状態：<%= @community_req.update_status_i18n %></P>
+   <%= link_to "状態の変更", edit_admin_community_req_path(@community_req) %>
+   <%= link_to "削除", admin_community_req_path(@community_req), method: :delete %>
+</div>

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:show, :index, :destroy]
     resources :communities, only: [:index, :show, :new, :create, :edit, :update, :destroy]
     resources :users, only: [:index, :show, :edit, :update]
-    resources :community_reqs, only: [:index, :show, :edit, :update]
+    resources :community_reqs, only: [:index, :show, :edit, :update, :destroy]
     root 'homes#top'
   end
 
@@ -15,6 +15,9 @@ Rails.application.routes.draw do
    get '/about' => 'homes#about'
    resources :posts
    resources :communities, only: [:index, :show]
+   resource :community_reqs,only: [:create, :new] do
+     get 'thanks' => 'community_reqs#thanks'
+   end
    resource :users,only: [] do #resourceはidとindexをpathから取り除ける
      get 'my_page' => 'users#show'
      get 'information/edit' => 'users#edit'
@@ -22,7 +25,6 @@ Rails.application.routes.draw do
      get 'unsubscribe' =>'users#unsubscribe'
      patch 'withdraw' => 'users#withdraw'
    end
-   resources :community_reqs,only: [:index, :show,]
  end
 
 

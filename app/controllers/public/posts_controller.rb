@@ -45,9 +45,12 @@ class Public::PostsController < ApplicationController
   end
 
   def destroy
-    post_image = Post.find(params[:id])
-    post_image.destroy
-    redirect_to pasts_path
+    @post = Post.find(params[:id])
+    if @post.destroy
+    redirect_to posts_path
+    else
+    render :index
+    end
   end
   
   
