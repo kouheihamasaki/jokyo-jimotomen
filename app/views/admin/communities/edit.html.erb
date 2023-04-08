@@ -11,11 +11,11 @@
             </div>
             <div class="row form-group">
               <h5 class="col-4">対象都道府県</h5>
-              <%= f.text_area :prefecture, required: true, autocomplete: "prefecture",  class: "col-7 form-control" %>
+              <%= f.text_field :prefecture, required: true, autocomplete: "prefecture",  class: "col-7 form-control" %>
             </div>
             <div class="row form-group">
               <h5 class="col-4">コミュニティの説明</h5>
-              <%= f.text_field :price, required: true, autocomplete: "introduction", class: "col-7 form-control" %>  円
+              <%= f.text_area :introduction, required: true, autocomplete: "introduction", class: "col-7 form-control" %>
             </div>
             <div class="text-center">
               <%= f.submit '  変更を保存  ', class: "btn btn-outline-success" %>

@@ -6,16 +6,16 @@
           <div class="mb-5 px-3">
           <%= form_with model: @community, url: admin_communities_path do |f| %>
             <div class="row form-group">
+              <%= f.label :"コミュニティタイトル", class: "col-3 mx-auto" %>
+              <%= f.text_field :title, autofocus: true,  autocomplete: "title", class: "col-8 form-control" %>
+            </div>
+            <div class="row form-group">
               <%= f.label :"コミュニティ説明", class: "col-3 mx-auto" %>
-              <%= f.password_field :introduction, autocomplete: "introduction", class: "col-8 form-control" %>
+              <%= f.text_field :introduction, autocomplete: "introduction", class: "col-8 form-control" %>
             </div>
             <div class="row form-group">
               <%= f.label :"都道府県", class: "col-3 mx-auto" %>
-              <%= f.email_field :prefecture, autofocus: true, autocomplete: "prefecture", class: "col-8 form-control" %>
-            </div>
-            <div class="row form-group">
-              <%= f.label :"コミュニティタイトル", class: "col-3 mx-auto" %>
-              <%= f.password_field :title, autocomplete: "title", class: "col-8 form-control" %>
+              <%= f.text_field :prefecture, autocomplete: "prefecture", class: "col-8 form-control" %>
             </div>
             <div class="text-center">
               <%= f.submit "  新しく作る  ", class: "btn btn-outline-primary" %>

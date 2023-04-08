@@ -2,9 +2,9 @@ class Admin::CommunitiesController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @community = Community.page(params[:page])
+    @communities = Community.page(params[:page])
   end
-  
+
   def show
     @community = Community.find(params[:id])
   end
@@ -14,24 +14,34 @@ class Admin::CommunitiesController < ApplicationController
   end
 
   def create
-    @community = Community.new
-    if @community.save
-      redirect_to admin_community_path(@commnunity)
+    @community = Community.new(community_params)
+    @community.admin_id = current_admin.id
+    if @community.save!
+      redirect_to admin_community_path(@community)
     else
       render :new
     end
   end
-  
+
   def edit
     @community = Community.find(params[:id])
   end
 
   def update
     @community = Community.find(params[:id])
-    if @community.update(item_params)
-      redirect_to admin_community_path(@commnunity)
+    if @community.update(community_params)
+      redirect_to admin_community_path(@community)
     else
       render :edit
+    end
+  end
+  
+  def destroy
+    @community = Community.find(params[:id])
+    if @community.destroy
+      redirect_to admin_communities_path
+    else
+      render :show
     end
   end
 
