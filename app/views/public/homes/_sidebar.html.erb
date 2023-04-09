@@ -15,11 +15,13 @@
    </tr>
   </tbody>
  </table>
+ <% if user.email != "guest@example.com" %>
  <div class="row">
   <%= link_to information_edit_users_path, class: 'btn btn-outline-secondary btn-block mb-3' do %>
    <i class="fas fa-user-cog"></i>
   <% end %>
  </div>
+ <% end %>
  
  <% else %>
  <h3>会員登録で、<br>

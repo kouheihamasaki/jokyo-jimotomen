@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  
+
   enum prefecture: {
     "---":0,
      北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
@@ -12,20 +12,32 @@ class User < ApplicationRecord
      福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,
      沖縄県:47
   }
-  
+
   has_many   :post
   has_many   :post_comment
   has_many   :favorite
   has_many   :community_comment
   has_many   :community_req
-  
+
   has_one_attached :profile_image
-  
+
   def full_name
     self.last_name + " " + self.first_name
   end
+
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.first_name = "さん"
+      user.last_name = "ゲスト"
+      user.first_name_kana ="サン"
+      user.last_name_kana ="ゲスト"
+      user.introduction = "ゲストです"
+      user.fav_noodle = "ゲスト"
+    end
+  end
   
-  
+
   def get_profile_image(width, height)
   unless profile_image.attached?
     file_path = Rails.root.join('app/assets/images/no_image_jokyo-jimotomen.png')
@@ -33,8 +45,8 @@ class User < ApplicationRecord
   end
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
-  
-  
+
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
