@@ -6,3 +6,9 @@
   width: 60px;
   height: 60px;
 }
+
+.img-container img {
+  width: 200px;
+  height: 180px;
+  object-fit: cover;
+}

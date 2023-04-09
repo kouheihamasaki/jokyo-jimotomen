@@ -2,6 +2,8 @@ class Public::PostsController < ApplicationController
 
   def index
     @post_all = Post.all
+    @posts = Post.page(params[:page]).per(10)
+    @user = current_user
     
     if params[:tag_ids]
       @posts = []

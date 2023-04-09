@@ -12,15 +12,25 @@ class Public::UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
-    @user.update
-    redirect_to my_page_users
+    @user = current_user
+    if @user.update!(user_params)
+      redirect_to my_page_users_path, notice: "正常に更新されました。"
+    else
+      render "edit"
+    end
   end
 
   def unsubscribe
+    @user = current_user
   end
 
   def withdraw
+    @user = current_user
+    if @user.update(is_deleted:true)
+    sign_out_and_redirect(current_user)
+    else
+     render "unsubscribe"
+    end
   end
   
   
@@ -35,8 +45,10 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :profile_image)
+    params.require(:user).permit(:last_name,:first_name,
+                                     :last_name_kana,:first_name_kana,
+                                     :introduction,:prefecture,
+                                     :fav_noodle,:email,:is_deleted)
   end
-
-
+  
 end
