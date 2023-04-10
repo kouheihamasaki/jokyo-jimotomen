@@ -13,7 +13,10 @@ Rails.application.routes.draw do
  scope module: :public do
    root to: 'homes#top'
    get '/about' => 'homes#about'
-   resources :posts
+   resources :posts, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
+     resource :favorites, only: [:create, :destroy]
+     resources :post_comments, only: [:create, :destroy]
+   end
    resources :communities, only: [:index, :show]
    resource :community_reqs,only: [:create, :new] do
      get 'thanks' => 'community_reqs#thanks'

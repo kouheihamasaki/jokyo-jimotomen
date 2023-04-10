@@ -13,10 +13,10 @@ class User < ApplicationRecord
      沖縄県:47
   }
 
-  has_many   :post
-  has_many   :post_comment
-  has_many   :favorite
-  has_many   :community_comment
+  has_many   :post, dependent: :destroy
+  has_many   :post_comment, dependent: :destroy
+  has_many   :favorite, dependent: :destroy
+  has_many   :community_comment, dependent: :destroy
   has_many   :community_req
 
   has_one_attached :profile_image
