@@ -9,7 +9,7 @@
 
     <div class="row">
       <% @posts.each do |post| %>
-        <div class="col-4 img-container img">
+        <div class="col-3 img-container img">
           <div>
             <%= link_to post_path(post.id) do %>
              <%= image_tag post.get_image(300,200) %>
@@ -17,9 +17,13 @@
           </div>
         </div>
 
-        <div class="col-8">
-          <h5 class="">店名：<%= post.shop_name %></h5>
-          <p class="">タイトル：<%= post.title %></p>
+        <div class="col-9">
+          <h5 class="">
+            <%= link_to post_path(post.id) do %>
+              <%= post.shop_name %></h5>
+            <% end %>
+          </h5>
+          <p class="font-weight-bold lead"><%= post.title %></p>
           <p class="">説明：<%= post.body %></p>
           <% post.tags.each do |tag| %>
            <span><%= tag.name %></span>
