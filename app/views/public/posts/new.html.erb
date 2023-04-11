@@ -24,5 +24,20 @@
     <%= f.file_field :image, accept: "image/*" %>
     <%= f.submit '投稿' %>
     
+    <div id="post_raty">
+     <label>Rate</label>
+    </div>
+    
+    <script>
+     let elem = document.querySelector('#post_raty');
+     let opt = {
+      starOn: "<%= asset_path('star-on.png') %>",
+      starOff: "<%= asset_path('star-off.png') %>",
+      scoreName: 'post[star]' 
+      half: false,
+     };
+     raty(elem, opt);
+    </script>
+    
     
   <% end %>

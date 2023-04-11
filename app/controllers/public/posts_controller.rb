@@ -62,7 +62,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:shop_name, :image, :title, :body, tag_ids: [])
+    params.require(:post).permit(:shop_name, :image, :title, :body, :star, tag_ids: [])
   end
   
 end
