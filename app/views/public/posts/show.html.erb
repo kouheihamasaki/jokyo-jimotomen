@@ -18,6 +18,20 @@
     <% if @post.user == current_user %>
       <%= link_to "削除", post_path(@post), method: :delete %>
     <% end %>
+    
+    <div id="show-stars"></div>
+    <script>
+      let showRateElement = document.querySelector('#show-stars');
+      let showOpt = {
+      starOn: "<%= asset_path('star-on.png') %>",
+      starOff: "<%= asset_path('star-off.png') %>",
+      scoreName: 'post[star]',
+      score: "<%= @post.star %>",
+      readOnly: true
+      };
+      window.raty(showRateElement, showOpt);
+    </script>
+          
     <% if @post.favorited_by?(current_user) %>
     <p>
       <%= link_to post_favorites_path(@post), method: :delete do %>

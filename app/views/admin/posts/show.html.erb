@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+
+    <%= render 'public/homes/sidebar', user: @user %>
+    
+    <div>
+      <%= image_tag @post.get_image(400,600) %>
+      <p>ショップ名：<%= @post.shop_name %></p>
+      <p>説明：<%= @post.body %></p>
+      <% @post.tags.each do |tag| %>
+        <span><%= tag.name %></span>
+      <% end %>
+      <p>投稿ユーザー画像：<%= image_tag @post.user.get_profile_image(100,100) %></p>
+      <p>ユーザーネーム：<%= @post.user.full_name %></p>
+      <p>投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
+        <%= link_to "削除", admin_post_path(@post), method: :delete %>
+      <p>
+          ♥<%= @post.favorite.count %> いいね
+      </p>
+    </div>
+
+
+  <div>
+    <p>コメント件数：<%= @post.post_comment.count %></p>
+    <% @post.post_comment.each do |post_comment| %>
+      <p><%= image_tag post_comment.user.get_profile_image(100,100) %></p>
+      <%= post_comment.user.full_name %>
+      <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+      <% if post_comment.user == current_user %>
+        <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
+      <% end %>
+    <% end %>
+  </div>
+  <div>
+    <%= form_with model: [@post, @post_comment] do |f| %>
+      <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+      <%= f.submit "送信する" %>
+    <% end %>
+  </div>
+
+
+     <!--raty-->
+    <td>
+    <div id="star-rate<%= @post.id%>"></td>
+     <script>
+      $('#star-rate<%= @post.id %>').empty();
+      $('#star-rate<%= @post.id%>').raty({
+         size      : 36,
+         starOff   : '<%= asset_path('star-off.png') %>',
+         starOn    : '<%= asset_path('star-on.png') %>',
+         half      : false,
+         readOnly: true,
+         score: <%= @post.star %>,
+       });
+     </script>
+  </td>
+
+
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+
+    <%= render 'public/homes/sidebar', user: @user %>
+
+    <div class="col-9">
+      <h2>投稿一覧</h2>
+      <h6 class="mt-3">（全<%= @post_all.count %>件中<%= @posts.count %>件を表示）</h6>
+
+    <div class="row">
+      <% @posts.each do |post| %>
+        <div class="col-3 img-container img">
+          <div>
+            <%= link_to admin_post_path(post.id) do %>
+             <%= image_tag post.get_image(300,200) %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="col-9">
+          <h5 class="">
+            <%= link_to admin_post_path(post.id) do %>
+              <%= post.shop_name %></h5>
+            <% end %>
+          </h5>
+          <p class="font-weight-bold lead"><%= post.title %></p>
+          <p class="">説明：<%= post.body %></p>
+          <% post.tags.each do |tag| %>
+           <span><%= tag.name %></span>
+          <% end %>
+          <p class=""><small class="text-muted">
+           <%= image_tag post.user.get_profile_image(50,50) %>
+           <%= post.user.full_name %>さんの投稿
+          </small></p>
+          
+        </div>
+        <% end %>
+        
+      </div>
+    </div>
+
+  </div>
+</div>
+
