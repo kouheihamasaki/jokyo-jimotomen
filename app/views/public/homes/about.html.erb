@@ -1,11 +1,13 @@
 <div class="container">
 
-  <h2>-上京しても、麺がそばにいる-</h2>
-
   <div class="row ml-5 mt-3">
     <div class="col-6">
-      <div class="" style="max-width: 600px;">
-        <p class="d-flex align-items-center justify-content-center" style="height:250px;">
+      <div class="">
+        <h2 class="font-weight-bold about-h2">上京しても</h2>
+        <h2 class="font-weight-bold about2-h2">　　　麺がそばにいる</h2>
+      </div>
+      <div class="" style="">
+        <p class="px-num d-flex align-items-center justify-content-center" style="height:250px;">
          出身地から東京へ　学業で　仕事で　勇気を出して来たあなた<br>
          時には寂しくなることもある　つらいこともある<br>
          そんな時に地元の味で　同じ思いの人たちの声で<br>
@@ -22,33 +24,37 @@
     </div>
   </div>
 
-  <h3>このサイトでできること</h3>
 
+  <h3>　このサイトでできること</h3>
   <div class="row ml-5 mt-3">
     <div class="col-4">
       <div class="" style="max-width: 600px;">
         <img class="card-img" src="assets/about3.jpg" alt="">
       </div>
-      <h5>東京のお店のレビューをする</h5>
-      <p class="d-flex align-items-center justify-content-center" style="height:250px;">
+      <h5 class="col-auto about-h5">東京のお店のレビューをする</h5>
+      <p class="px-num d-flex align-items-center justify-content-center" style="height:240px;">
          東京で食べた地元麺のお店のレビューを投稿できます<br>
          あなたが過ごした地元で食べた味に近いお店を、ぜひみなさんへ紹介してください<br>
          コメントやいいねなどの共感がもらえることも魅力<br>
          日記の気分で、気軽に書いていけばご自身のお店メモにもなります</p>
-      <%= link_to "新規登録", new_user_registration_path %>
+      <div class="add-font-rocknroll">
+        <%= link_to "お店をレビューする＞＞＞", new_post_path %>
+      </div>
     </div>
 
     <div class="col-4">
       <div class="" style="max-width: 600px;">
         <img class="card-img" src="assets/about1.jpg" alt="">
       </div>
-      <h5>東京のお店のレビューをみる</h5>
-      <p class="d-flex align-items-center justify-content-center" style="height:250px;">
+      <h5 class="col-auto about-h5">東京のお店のレビューをみる</h5>
+      <p class="px-num d-flex align-items-center justify-content-center" style="height:240px;">
          地元のあの味、食べたくなった時にほかの方のレビューが見れます<br>
          東京にはたくさんお店がありますが、地元の本来の味を出している店舗は少ないです<br>
          同じ地元の方のレビューなら、近い味覚で参考になるレビューがあるはず<br>
          他の地域の気になった麺を検索したい際にもぜひ</p>
-         <%= link_to "投稿一覧を見る", posts_path %>
+        <div class="add-font-rocknroll">
+         <%= link_to "投稿一覧を見る＞＞＞", posts_path %>
+        </div>
     </div>
 
 
@@ -56,22 +62,29 @@
       <div class="" style="max-width: 600px;">
         <img class="card-img" src="assets/about4.jpg" alt="">
       </div>
-      <h5>地元麺について語る</h5>
-      <p class="d-flex align-items-center justify-content-center" style="height:250px;">
+      <h5 class="col-auto about-h5">地元麺について語る</h5>
+      <p class="px-num d-flex align-items-center justify-content-center" style="height:240px;">
          東京でふらっと入ったお店で懐かしい地元の味がした<br>
          地元の大好きなラーメン屋について語れる相手が欲しい<br>
          そんな時はこのコミュニティでたくさん愛を語ってください<br>
          いつでも気軽に「ジモトーク」<br>
          コミュニティの種類も豊富</p>
-      <%= link_to "コミュニティ一覧へ", communities_path %>
+      <div class="add-font-rocknroll">
+        <%= link_to "コミュニティ一覧へ＞＞＞", communities_path %>
+      </div>
     </div>
-
-
-     <div class="row ml-5 mt-3">
-       <h5>会員登録　ログインはこちらから！</h5>
-       <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-outline-secondary ml-3 mb-3' %>
-       <%= link_to "ログイン", new_user_session_path, class: 'btn btn-outline-secondary ml-3 mb-3' %>
-     </div>
-
   </div>
+
+  <div class="row ml-8 mt-5">
+    <h4>　　会員登録　ログインはこちらから！</h4>
+  
+
+  <div class="field col-md-10 offset-md-1 mt-3 add-font-rocknroll">
+    <%= link_to 'ログインページへ', new_user_session_path, class: "btn btn-primary btn-sm btn-block mb-3" %>
+  </div>
+
+  <div class="field col-md-10 offset-md-1 mb-3 add-font-rocknroll">
+    <%= link_to '新規会員登録へ', new_user_registration_path, class: "btn btn-success btn-sm btn-block mb-5" %>
+  </div>
+</div>
 </div>
