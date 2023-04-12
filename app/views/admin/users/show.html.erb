@@ -1,38 +1,55 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8 mx-auto">
-      <h4 class="my-4"><mark class="bg-light"><%= @user.full_name %>さんの会員詳細</mark></h4>
-        <div class="col-md-9 d-flex pl-0 font-weight-bold">
-          <div class="col-auto pl-0">
-            <p>会員ID</p>
-            <p>氏名</p>
-            <p>フリガナ</p>
-            <p>自己紹介文</p>
-            <p>好きな都道府県</p>
-            <p>押し麺類</p>
-            <p>メールアドレス</p>
-            <p>会員ステータス</p>
-          </div>
-          <div class="col-auto">
-            <p><%= @user.id %></p>
-            <p><%= @user.full_name %></p>
-            <p><%= @user.last_name_kana+"　"+@user.first_name_kana %></p>
-            <p><%= @user.introduction %></p>
-            <p><%= @user.prefecture %></p>
-            <p><%= @user.fav_noodle %></p>
-            <p><%= @user.email %></p>
-            <% if @user.is_deleted == false %>
-              <p class="font-weight-bold text-success">有効</p>
-            <% else %>
-              <p class="font-weight-bold text-secondary">退会</p>
-            <% end %>
-            <div class="col-auto d-flex pl-0">
-              <div class="col-auto justify-content-start pl-0">
-                <%=link_to "編集する", edit_admin_user_path(@user) ,class: "btn btn-success" %>
-              </div>
-            </div>
+    <div class="col-md-12 mx-auto">
+      <h4 class="my-4"><mark><%= @user.full_name %>さんの会員詳細</mark></h4>
+        <div class="d-flex pl-0 font-weight-bold">
+          <table class="table table-bordered mt-3">
+          <tr>
+            <td class="col-2 table-info">氏名</td>
+            <td><%= @user.last_name %> <%= @user.first_name %></td>
+          </tr>
+          <tr>
+            <td class="table-info">フリガナ</td>
+            <td><%= @user.last_name_kana %> <%= @user.first_name_kana %></td>
+          </tr>
+          <tr>
+            <td class="table-info">ユーザー名</td>
+            <td><%= @user.screen_name %></td>
+          </tr>
+          <tr>
+            <td class="table-info">自己紹介文</td>
+            <td><%= @user.introduction %></td>
+          </tr>
+          <tr>
+            <td class="table-info">好きな都道府県</td>
+            <td><%= @user.prefecture %></td>
+          </tr>
+          <tr>
+            <td class="table-info">押し麺類</td>
+            <td><%= @user.fav_noodle %></td>
+          </tr>
+          <tr>
+            <td class="table-info">メールアドレス</td>
+            <td><%= @user.email %></td>
+          </tr>
+          <tr>
+            <td class="table-info">会員ステータス</td>
+            <td>
+              <% if @user.is_deleted == false %>
+                <p class="font-weight-bold text-success">有効</p>
+              <% else %>
+                <p class="font-weight-bold text-secondary">退会</p>
+              <% end %>
+            </td>
+          </tr>
+        </table>
+        </div>
+        <div class="col-auto d-flex pl-0">
+          <div class="col-auto justify-content-start pl-0">
+            <%=link_to "編集する", edit_admin_user_path(@user) ,class: "btn btn-success" %>
           </div>
         </div>
+      </div>
     </div>
   </div>
 </div>

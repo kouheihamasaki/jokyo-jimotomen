@@ -1,19 +1,21 @@
 
 <div class="col-md-3">
 <% if user_signed_in? %>
- <h2>会員情報</h2>
- <%= image_tag user.get_profile_image(100,100) %>
- <table class="table">
-  <tbody>
-   <tr>
-   <th>name</th>
-   <th><%= user.full_name %></th>
-   </tr>
-   <tr>
-   <th>introduction</th>
-   <th><%= user.introduction %></th>
-   </tr>
-  </tbody>
+  <div>
+    <h4>ようこそ！<br><%= user.last_name %>さん</h4>
+    <%= image_tag user.get_profile_image(100,100) %>
+  </div>
+  <table class="table">
+    <tbody>
+      <tr>
+        <th><%= image_tag user.get_profile_image(100,100) %></th>
+        <th><%= user.full_name %></th>
+      </tr>
+      <tr>
+        <th>introduction</th>
+        <th><%= user.introduction %></th>
+      </tr>
+   </tbody>
  </table>
  <% if user.email != "guest@example.com" %>
  <div class="row">

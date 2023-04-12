@@ -32,11 +32,12 @@ class User < ApplicationRecord
       user.last_name = "ゲスト"
       user.first_name_kana ="サン"
       user.last_name_kana ="ゲスト"
-      user.introduction = "ゲストです"
-      user.fav_noodle = "ゲスト"
+      user.screen_name ="ゲストログイン中"
+      user.introduction = "ゲストログイン中です"
+      user.fav_noodle = "ゲストログイン中です"
     end
   end
-  
+
 
   def get_profile_image(width, height)
   unless profile_image.attached?
