@@ -34,18 +34,19 @@
     <div class="row mt-1">
       <p class="col-md-2">自己紹介文</p>
       <div class="field col-md-9">
-        <%= f.text_field :introduction, required: true, autocomplete: "introduction" %>
+        <%= f.text_area :introduction,:size=>"61x5", required: true, autocomplete: "introduction" %>
       </div>
     </div>
-    <div class="row mt-3">
-      <p class="col-md-3">好きな都道府県</p>
+    
+    <div class="row mt-1">
+      <p class="col-md-2">好きな都道府県</p>
       <div class="field col-md-9">
         <%= f.select :prefecture, User.prefectures.keys, {} %>
       </div>
     </div>
 
-    <div class="row mt-3">
-      <p class="col-md-3">押し麺類</p>
+    <div class="row mt-1">
+      <p class="col-md-2">押し麺類</p>
       <div class="field col-md-9">
         <%= f.text_field :fav_noodle,required: true, autocomplete: "fav_noodle" %>
       </div>
