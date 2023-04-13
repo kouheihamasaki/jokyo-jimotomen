@@ -7,7 +7,7 @@
       <%= f.text_field :shop_name %>
     <h4>投稿本文</h4>
       <%= f.text_area :body %>
-
+    <!--タグ部分-->
     <div class='form-group'>
       <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
         <div class='form-check'>
@@ -18,13 +18,11 @@
         </div>
       <% end %>
     </div>
-
-
     <h4>画像</h4>
     <%= f.file_field :image, accept: "image/*" %>
-    <%= f.submit '投稿' %>
-
-
+    
+    
+    <!--ratyのview/java-->
     <div id="post_raty"></div>
     <script>
      let elem = document.querySelector('#post_raty');
@@ -36,6 +34,12 @@
      };
      raty(elem, opt);
     </script>
-
+    
+    <%= f.label :adress, class: "form-label fw-bold"%>
+    <%= f.text_field :adress, autofocus: true,placeholder: "住所を入力してください", class: "form-control" %>
+      
+    <%= f.submit '投稿' %>
+      
 
   <% end %>
+  

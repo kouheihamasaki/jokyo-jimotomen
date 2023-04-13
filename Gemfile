@@ -64,3 +64,9 @@ gem "enum_help"
 gem 'kaminari'
 
 gem 'jquery-rails'
+
+gem "gmaps4rails"
+
+gem "geocoder"
+
+gem "dotenv-rails"

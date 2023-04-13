@@ -7,6 +7,9 @@ class Post < ApplicationRecord
   
   has_one_attached :image
   
+  geocoded_by :adress
+  after_validation :geocode
+  
   
   def get_image(width,height)
     unless image.attached?
