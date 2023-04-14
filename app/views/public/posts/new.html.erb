@@ -1,13 +1,17 @@
-
-<h1>地元麺　投稿フォーム</h1>
-  <%= form_with model: @post do |f| %>
-    <h4>投稿タイトル</h4>
-      <%= f.text_field :title %>
-    <h4>ショップ名</h4>
-      <%= f.text_field :shop_name %>
-    <h4>投稿本文</h4>
-      <%= f.text_area :body %>
+<div class="container px-5">
+  <div class="row">
+    <h2 class="midashi col-auto mt-2">地元麺　投稿フォーム</h2>
+  </div>
+  <div class="row">
+    <%= form_with model: @post do |f| %>
+    <h4 class="mt-2">投稿タイトル</h4>
+      <%= f.text_field :title, :size=>"72", autofocus: true %>
+    <h4 class="mt-2">ショップ名</h4>
+      <%= f.text_field :shop_name, :size=>"72" %>
+    <h4 class="mt-2">投稿本文</h4>
+      <%= f.text_area :body,:size=>"74x10", :placeholder => "博多豚骨ラーメン"%>
     <!--タグ部分-->
+    <h4 class="mt-2">タグの選択</h4>
     <div class='form-group'>
       <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
         <div class='form-check'>
@@ -18,11 +22,9 @@
         </div>
       <% end %>
     </div>
-    <h4>画像</h4>
+    <h4 class="mt-2">画像</h4>
     <%= f.file_field :image, accept: "image/*" %>
-    
-    
-    <!--ratyのview/java-->
+
     <div id="post_raty"></div>
     <script>
      let elem = document.querySelector('#post_raty');
@@ -34,13 +36,17 @@
      };
      raty(elem, opt);
     </script>
-    
-    
-    <%= f.label :adress, class: "form-label fw-bold"%>
-    <%= f.text_field :adress, autofocus: true,placeholder: "住所を入力してください", class: "form-control" %>
-      
+
+    <h4 class="mt-2">お店の住所</h4>
+    <%= f.text_field :adress, :size=>"72" ,placeholder: "お店の住所を正しく入力してください（郵便番号はいりません）" %>
+
     <%= f.submit '投稿' %>
-      
+
 
   <% end %>
-  
+
+
+   </div>
+</div>
+
+<h4 class="mt-2">☆５段階評価（☆５が最大評価です）</h4>
