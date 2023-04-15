@@ -8,29 +8,18 @@
       </h3>
     </div>
     <div class ="row mt-2">
-      <small><%= @post.created_at.strftime('%Y/%m/%d') %></small>
-      <small class="text-muted">　コメント件数：<%= @post.post_comment.count %></small>
+      <small><%= @post.created_at.strftime('%Y/%m/%d') %>　</small>
+      <small class="text-muted">　💬<%= @post.post_comment.count %></small>
+      <small class="text-muted">　💛<%= @post.favorite.count %></small>
     </div>
     <div class ="row">
-      <div class ="max-auto d-block">
-        <%= image_tag @post.get_image(800,1200) %>
-      </div>
+      <%= image_tag @post.get_image(800,1200) %>
     </div>
-    <div class ="row">
-      <h5 class="mt-3">ショップ名：<%= @post.shop_name %></h5>
+    <div class ="row mt-2">
+    <h4>評価　</h4>
+    <div id="show-stars"></div>
+      <h4 class="font-red">　星<%= @post.star %>ツ！</h4>
     </div>
-      <P><%= simple_format(@post.body) %></P>
-      <% @post.tags.each do |tag| %>
-        <span><%= tag.name %></span>
-      <% end %>
-      <p>投稿ユーザー画像：<%= image_tag @post.user.get_profile_image(100,100) %></p>
-      <p>ユーザーネーム：<%= @post.user.full_name %></p>
-      <p>投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
-      <% if @post.user == current_user %>
-        <%= link_to "削除", post_path(@post), method: :delete %>
-      <% end %>
-
-      <div id="show-stars"></div>
       <script>
         let showRateElement = document.querySelector('#show-stars');
         let showOpt = {
@@ -42,55 +31,35 @@
         };
         window.raty(showRateElement, showOpt);
       </script>
-
-      <% if @post.favorited_by?(current_user) %>
-      <p>
-        <%= link_to post_favorites_path(@post), method: :delete do %>
-          ♥<%= @post.favorite.count %> いいね
-        <% end %>
-      </p>
-      <% else %>
-      <p>
-        <%= link_to post_favorites_path(@post), method: :post do %>
-          ♡<%= @post.favorite.count %> いいね
-        <% end %>
-      </p>
-      <% end %>
-
-
-
-    <div>
-      <p>コメント件数：<%= @post.post_comment.count %></p>
-      <% @post.post_comment.each do |post_comment| %>
-        <p><%= image_tag post_comment.user.get_profile_image(100,100) %></p>
-        <%= post_comment.user.full_name %>
-        <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
-        <% if post_comment.user == current_user %>
-          <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
-        <% end %>
+    <div class="row">
+      <% @post.tags.each do |tag| %>
+        <span><%= tag.name %></span>
       <% end %>
     </div>
-    <!--raty-->
-    <div id="star-rate<%= @post.id%>">
-      <script>
-        $('#star-rate<%= @post.id %>').empty();
-        $('#star-rate<%= @post.id%>').raty({
-         size      : 36,
-         starOff   : '<%= asset_path('star-off.png') %>',
-         starOn    : '<%= asset_path('star-on.png') %>',
-         half      : false,
-         readOnly: true,
-         score: <%= @post.star %>,
-         });
-      </script>
+    <p class="mt-3"><%= simple_format(@post.body) %></p>
+    <div class ="row">
+      <table class="table table-bordered mt-3">
+        <tr>
+          <td>投稿者</td>
+          <td>
+            <%= image_tag @post.user.get_profile_image(40,40) %>
+            <%= @post.user.screen_name %>
+          </td>
+        </tr>
+        <tr>
+          <td class="mt-3">ショップ名</td>
+          <td><%= @post.shop_name %></td>
+        </tr>
+        <tr>
+          <td>住所</td>
+          <td><%= @post.adress %></td>
+        </tr>
+      </table>
     </div>
 
-    <h5>住所</h5>
-    <p><%= @post.adress %></p>
     <div id="map" style="height: 400px;"></div>
     <script>
     function initMap(){
-      // 地図の位置情報(緯度・経度)を取得
       let mapPosition = {lat: <%= @post.latitude || 0 %> , lng: <%= @post.longitude || 0 %> };
       let map = new google.maps.Map(document.getElementById('map'), {
         zoom: 15,
@@ -117,6 +86,38 @@
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap" async defer></script>
 
+    <div class="mt-2">
+      <% if @post.favorited_by?(current_user) %>
+      <p>
+        <%= link_to post_favorites_path(@post), method: :delete do %>
+          ♥<%= @post.favorite.count %> いいね
+        <% end %>
+      </p>
+      <% else %>
+      <p>
+        <%= link_to post_favorites_path(@post), method: :post do %>
+          ♡<%= @post.favorite.count %> いいね
+        <% end %>
+      </p>
+      <% end %>
+    </div>
+
+
+    <div>
+      <p>コメント件数：<%= @post.post_comment.count %></p>
+      <% @post.post_comment.each do |post_comment| %>
+        <h6>
+          <%= post_comment.user.screen_name %>
+          <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+        </h6>
+        <p>
+          <%= post_comment.comment %>
+        </p>
+        <% if post_comment.user == current_user %>
+          <%= link_to "このコメントを削除する", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
+        <% end %>
+      <% end %>
+    </div>
 
     <div>
       <%= form_with model: [@post, @post_comment] do |f| %>
@@ -126,9 +127,16 @@
     </div>
 
 
+          <% if @post.user == current_user %>
+        <%= link_to "削除", post_path(@post), method: :delete %>
+      <% end %>
+
+
   </div>
 
     <%= render 'public/homes/sidebar', user: @user %>
+
+
 
   </div>
 </div>
