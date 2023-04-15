@@ -23,8 +23,8 @@
       <% end %>
     </div>
     <h4 class="mt-2">画像</h4>
-    <%= f.file_field :image, accept: "image/*" %>
-
+      <%= f.file_field :image, accept: "image/*" %>
+    <h4 class="mt-2">５段階評価（星５個が最大です）</h4>
     <div id="post_raty"></div>
     <script>
      let elem = document.querySelector('#post_raty');
@@ -36,17 +36,14 @@
      };
      raty(elem, opt);
     </script>
-
     <h4 class="mt-2">お店の住所</h4>
-    <%= f.text_field :adress, :size=>"72" ,placeholder: "お店の住所を正しく入力してください（郵便番号はいりません）" %>
-
-    <%= f.submit '投稿' %>
-
-
-  <% end %>
-
-
-   </div>
+      <%= f.text_field :adress, :size=>"72" ,placeholder: "お店の住所を正しく入力してください（郵便番号はいりません）" %>
+    <div class="actions row mt-4">
+      <div class="field col-auto pb-lg-5 add-font-rocknroll">
+        <%= f.submit '投稿', class: "text-dark btn btn-outline-success btn-lg" %>
+      </div>
+    </div>
+    <% end %>
+  </div>
 </div>
 
-<h4 class="mt-2">☆５段階評価（☆５が最大評価です）</h4>
