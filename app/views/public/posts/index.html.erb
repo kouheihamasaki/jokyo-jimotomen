@@ -26,10 +26,10 @@
                 </div>
               </div>
               <div class="col-5 offset-md-2">
-                <p class=""><small class="text-muted text-right">
+                <h6 class=""><small class="text-muted text-right">
                   <%= image_tag post.user.get_profile_image(40,40) %>
                   <%= post.user.screen_name %>さんの投稿
-                </small></p>
+                </small></h6>
               </div>
             </div>
           <script>
@@ -44,10 +44,11 @@
             window.raty(showRateElement<%= post.id%>, showOpt<%= post.id%>);
           </script>
             <div class="add-font-rocknroll">
-              <p class="">この記事のタグ：
+              <h6><%= post.body.truncate(39) %></h6>
+              <h6 class="">
                 <% post.tags.each do |tag| %>
                 <span class="tag-dez"><%= tag.name %></span>
-                <% end %></p>
+                <% end %></h6>
             </div>
           </div>
         </div>

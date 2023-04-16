@@ -1,13 +1,17 @@
-<h1>新コミュニティ要望フォーム</h1>
-  <%= form_with model: @community_req do |f| %>
-    <h4>新しいコミュニティの名前</h4>
-    <%= f.text_field :title %>
-    <h4>どのようなコミュニティでしょうか？</h4>
-    <%= f.text_area :body %>
-    <%= f.hidden_field :update_status, :value => "incomplete" %>
-    
-    <%= f.submit '投稿' %>
-    
-    
-  <% end %>
-  
+<div class="container px-5">
+  <div class="row">
+    <h2 class="midashi col-auto mt-2">新コミュニティ要望フォーム</h2>
+  </div>
+  <div class="row">
+    <%= form_with model: @community_req do |f| %>
+      <h4 class="mt-4">新しいコミュニティの名前</h4>
+      <%= f.text_field :title, :size=>"72", autofocus: true %>
+      <h4 class="mt-4">どのようなコミュニティでしょうか？</h4>
+      <%= f.text_area :body,:size=>"74x10" %>
+      <%= f.hidden_field :update_status, :value => "incomplete" %>
+      <div class="add-font-rocknroll mt-4">
+        <%= f.submit '投稿', class: "text-dark btn btn-outline-success btn-lg" %>
+      </div>
+    <% end %>
+  </div>
+</div>

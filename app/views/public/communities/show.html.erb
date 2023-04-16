@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-9">
+      <div>
+        <h3 class="mt-3 midashi"><%= @community.title %></h3>
+        <h5 class="font-blue">対象都道府県：<%= @community.prefecture %></h5>
+        <h5><%= @community.introduction %></h5>
+        <p><small class="text-muted">コミュニティ作成日：<%= @community.created_at.strftime('%Y/%m/%d') %></small></p>
+      </div>
+      <div>
+        <h6 class="">コメント件数：<%= @community.community_comment.count %></h6>
+        <% @community.community_comment.each do |post_comment| %>
+        <p class="">
+          <%= community_comment.comment %>
+        </p>
+        <div class="text-right">
+          <% if community_comment.user == current_user %>
+            <%= link_to "このコメントを削除する", community_community_comment_path(community_comment.community, community_comment), method: :delete, class: 'btn btn-outline-secondary ml-3 mb-3' %>
+          <% end %>
+        </div>
+        <h6 class="mb-2 text-right border-bottom text-muted">
+          <%= community_comment.user.screen_name %>
+          <%= community_comment.created_at.strftime('%Y/%m/%d') %>
+        </h6>
+      <% end %>
+      </div>
+      <div class="add-font-rocknroll mb-3 border-bottom">
+        <%= form_with model: [@community, @community_comment] do |f| %>
+          <%= f.text_area :comment, :size=>"75" %>
+          <%= f.submit "送信する" , class: 'btn btn-primary ml-1 mb-1' %>
+        <% end %>
+      </div>
+    </div>
+
+    <%= render 'public/homes/sidebar', user: @user %>
+
+  </div>
+</div>

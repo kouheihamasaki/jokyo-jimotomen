@@ -1,5 +1,5 @@
 class CommunityComment < ApplicationRecord
   
-  has_many   :community
-  has_many   :user
+  belongs_to   :community
+  belongs_to   :user
 end
