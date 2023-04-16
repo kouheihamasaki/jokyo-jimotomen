@@ -9,7 +9,7 @@
       </div>
       <div>
         <h6 class="">コメント件数：<%= @community.community_comment.count %></h6>
-        <% @community.community_comment.each do |post_comment| %>
+        <% @community.community_comment.each do |community_comment| %>
         <p class="">
           <%= community_comment.comment %>
         </p>

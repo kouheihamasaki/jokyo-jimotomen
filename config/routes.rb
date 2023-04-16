@@ -17,7 +17,9 @@ Rails.application.routes.draw do
      resource :favorites, only: [:create, :destroy]
      resources :post_comments, only: [:create, :destroy]
    end
-   resources :communities, only: [:index, :show]
+   resources :communities, only: [:index, :show] do
+     resources :community_comments, only: [:create, :destroy]
+   end
    resource :community_reqs,only: [:create, :new] do
      get 'thanks' => 'community_reqs#thanks'
    end
