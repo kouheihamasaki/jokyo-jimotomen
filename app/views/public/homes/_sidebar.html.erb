@@ -3,7 +3,6 @@
 <% if user_signed_in? %>
   <div>
     <h4>ようこそ！<br><%= user.last_name %>さん</h4>
-    <%= image_tag user.get_profile_image(100,100) %>
   </div>
   <table class="table">
     <tbody>
@@ -24,7 +23,9 @@
   <% end %>
  </div>
   <% end %>
- 
+<%= link_to "新規投稿", new_post_path %>
+
+
  <% else %>
  <h3>会員登録で、<br>
      便利にサイトが<br>
@@ -39,8 +40,9 @@
  <div class="">
    <%= link_to "ログイン", new_user_session_path, class: 'btn btn-outline-secondary ml-3' %>
  </div>
- 
+
+
  <% end %>
- 
+
  </div>
 

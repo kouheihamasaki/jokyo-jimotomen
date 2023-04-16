@@ -1,0 +1,49 @@
+<div class="container px-5">
+  <div class="row">
+    <h2 class="midashi col-auto mt-2">地元麺　投稿フォーム</h2>
+  </div>
+  <div class="row">
+    <%= form_with model: @post, url: post_path, method: :patch do |f| %>
+    <h4 class="mt-2">投稿タイトル</h4>
+      <%= f.text_field :title, :size=>"72", autofocus: true, required: true, autocomplete:"title" %>
+    <h4 class="mt-2">ショップ名</h4>
+      <%= f.text_field :shop_name, :size=>"72" %>
+    <h4 class="mt-2">投稿本文</h4>
+      <%= f.text_area :body,:size=>"74x10", :placeholder => "博多豚骨ラーメン"%>
+    <!--タグ部分-->
+    <h4 class="mt-2">タグの選択</h4>
+    <div class='form-group'>
+      <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+        <div class='form-check'>
+          <%= tag.label class: 'form-check-label' do %>
+            <%= tag.check_box class: 'form-check-input' %>
+            <%= tag.text %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <h4 class="mt-2">画像</h4>
+      <%= f.file_field :image, accept: "image/*" %>
+    <h4 class="mt-2">５段階評価（星５個が最大です）</h4>
+    <div id="post_raty"></div>
+    <script>
+     let elem = document.querySelector('#post_raty');
+     let opt = {
+      starOn: "<%= asset_path('star-on.png') %>",
+      starOff: "<%= asset_path('star-off.png') %>",
+      scoreName: 'post[star]',
+      half: false,
+     };
+     raty(elem, opt);
+    </script>
+    <h4 class="mt-2">お店の住所</h4>
+      <%= f.text_field :adress, :size=>"72" ,placeholder: "お店の住所を正しく入力してください（郵便番号はいりません）" %>
+    <div class="actions row mt-4">
+      <div class="field col-auto pb-lg-5 add-font-rocknroll">
+        <%= f.submit '投稿', class: "text-dark btn btn-outline-success btn-lg" %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+
