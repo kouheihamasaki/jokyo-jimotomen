@@ -2,8 +2,9 @@ class Admin::UsersController < ApplicationController
 
 
   def index
+    @users = User.page(params[:page]).per(10)
   end
-  
+
   def show
     @user = User.find(params[:id])
   end
@@ -11,7 +12,7 @@ class Admin::UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
-  
+
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
@@ -20,7 +21,7 @@ class Admin::UsersController < ApplicationController
      render :edit
     end
   end
-  
+
 
 
 
