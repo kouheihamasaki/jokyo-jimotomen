@@ -7,7 +7,7 @@
       <% @communities.each do |community| %>
         <div class="border-top mt-2">
           <h5 class="font-blue">
-            <%= link_to community_path(community), class:'text-reset', style:"text-decoration: underline" do %>
+            <%= link_to admin_community_path(community), class:'text-reset', style:"text-decoration: underline" do %>
              <%= community.title %>
             <% end %>
           </h5>

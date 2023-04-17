@@ -1,7 +1,7 @@
 <div class='container add-font'>
   <div class='row'>
-    <div class="col-md-8 mx-auto my-5">
-      <h3 class="my-5"><mark class="bg-light">コミュニティ編集</mark></h3>
+    <div class="col-md-10 mx-auto my-2">
+      <h3 class="my-5 midashi">コミュニティ編集</h3>
         <div class="ml-3">
           <div class="mb-5 px-3">
           <%= form_with model: @community, url: admin_community_path, method: :patch do |f| %>
@@ -15,7 +15,7 @@
             </div>
             <div class="row form-group">
               <h5 class="col-4">コミュニティの説明</h5>
-              <%= f.text_area :introduction, required: true, autocomplete: "introduction", class: "col-7 form-control" %>
+              <%= f.text_area :introduction,:size=>"61x5", required: true, autocomplete: "introduction", class: "col-7 form-control" %>
             </div>
             <div class="text-center">
               <%= f.submit '  変更を保存  ', class: "btn btn-outline-success" %>

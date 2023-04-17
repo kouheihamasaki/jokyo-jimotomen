@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     resources :posts, only: [:show, :index, :destroy] do
       resources :post_comments, only: [:destroy]
     end
-    resources :communities, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+    resources :communities, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+      resources :community_comments, only: [:destroy]
+    end
     resources :users, only: [:index, :show, :edit, :update]
     resources :community_reqs, only: [:index, :show, :edit, :update, :destroy]
     root 'homes#top'
