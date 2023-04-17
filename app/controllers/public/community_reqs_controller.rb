@@ -1,4 +1,5 @@
 class Public::CommunityReqsController < ApplicationController
+  before_action :authenticate_user!
 
   def new
     @community_req = CommunityReq.new

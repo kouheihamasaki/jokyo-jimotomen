@@ -32,8 +32,8 @@ class Public::UsersController < ApplicationController
      render "unsubscribe"
     end
   end
-  
-  
+
+
   def ensure_guest_user
     @user = current_user
     if @user.email == "guest@example.com"
@@ -50,5 +50,5 @@ class Public::UsersController < ApplicationController
                                      :introduction,:prefecture,:screen_name,
                                      :fav_noodle,:email,:is_deleted)
   end
-  
+
 end
