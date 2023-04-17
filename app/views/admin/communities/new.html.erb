@@ -1,7 +1,7 @@
 <div class="container add-font">
   <div class="row">
-    <div class="col-md-8 mx-auto my-5">
-      <h3 class="my-5"><mark class="bg-light">新しいコミュニティの作成</mark></h3>
+    <div class="col-md-10 mx-auto my-2">
+      <h3 class="my-5 midashi">新しいコミュニティの作成</h3>
         <div class="ml-3">
           <div class="mb-5 px-3">
           <%= form_with model: @community, url: admin_communities_path do |f| %>
@@ -18,7 +18,7 @@
               <%= f.text_field :prefecture, autocomplete: "prefecture", class: "col-8 form-control" %>
             </div>
             <div class="text-center">
-              <%= f.submit "  新しく作る  ", class: "btn btn-outline-primary" %>
+              <%= f.submit "  新しく作る  ", class: "btn btn-outline-secondary" %>
             </div>
           <% end %>
           </div>

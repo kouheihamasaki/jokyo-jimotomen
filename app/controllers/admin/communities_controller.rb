@@ -3,6 +3,7 @@ class Admin::CommunitiesController < ApplicationController
 
   def index
     @communities = Community.page(params[:page])
+    @community_all = Community.all
   end
 
   def show

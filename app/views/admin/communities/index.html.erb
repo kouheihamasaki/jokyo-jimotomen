@@ -1,21 +1,27 @@
-<h2>コミュニティ一覧</h2>
+<div class="container">
 
-<% @communities.each do |community| %>
- <div>
-  <p>
-    <%= link_to admin_community_path(community), class:'text-reset', style:"text-decoration: underline" do %>
-     <%= community.title %>
-    <% end %>
-  </p>
-  <p>対象都道府県：<%= community.prefecture %></p>
-  <p>コミュニティの説明：<%= community.introduction %></p>
- </div>
-<% end %>
-
-
-   <div class="col-2 mx-auto">
-    <%= paginate @communities %>
+  <div class="row">
+    <div class="col-12">
+      <h2 class="midashi col-auto mt-2">コミュニティ一覧</h2>
+      <h6 class="mt-3">（全<%= @community_all.count %>件中<%= @communities.count %>件を表示）</h6>
+      <% @communities.each do |community| %>
+        <div class="border-top mt-2">
+          <h5 class="font-blue">
+            <%= link_to community_path(community), class:'text-reset', style:"text-decoration: underline" do %>
+             <%= community.title %>
+            <% end %>
+          </h5>
+          <p>対象都道府県：<%= community.prefecture %></p>
+          <p><%= community.introduction %></p>
+        </div>
+      <% end %>
+      <div class="mt-3 mb-5"></div>
+    </div>
   </div>
 
- <%= link_to "コミュニティリクエスト", admin_community_reqs_path, class: 'btn btn-outline-secondary ml-3 mb-3' %>
- <%= link_to "新しいコミュニティの作成", new_admin_community_path, class: 'btn btn-outline-secondary ml-3 mb-3' %>
+  <div class="row">
+    <%= link_to "コミュニティリクエスト", admin_community_reqs_path, class: 'btn btn-outline-secondary ml-3 mb-3' %>
+    <%= link_to "新しいコミュニティの作成", new_admin_community_path, class: 'btn btn-outline-secondary ml-3 mb-3' %>
+  </div>
+
+</div>
