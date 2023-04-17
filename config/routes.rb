@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   # 管理側
   namespace :admin do
-    resources :posts, only: [:show, :index, :destroy]
+    resources :posts, only: [:show, :index, :destroy] do
+      resources :post_comments, only: [:destroy]
+    end
     resources :communities, only: [:index, :show, :new, :create, :edit, :update, :destroy]
     resources :users, only: [:index, :show, :edit, :update]
     resources :community_reqs, only: [:index, :show, :edit, :update, :destroy]
