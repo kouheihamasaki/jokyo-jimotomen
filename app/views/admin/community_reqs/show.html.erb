@@ -1,8 +1,23 @@
-<div>
-  <p>コミュニティリクエストタイトル：<%= @community_req.title %></p>
-  <p>コミュニティの説明：<%= @community_req.body %></p>
-  <p>投稿日：<%= @community_req.created_at.strftime('%Y/%m/%d') %></p>
-  <P>状態：<%= @community_req.update_status_i18n %></P>
-   <%= link_to "状態の変更", edit_admin_community_req_path(@community_req) %>
-   <%= link_to "削除", admin_community_req_path(@community_req), method: :delete %>
+<div class="container">
+  <div class="">
+    <h3 class="mt-3 midashi">コミュニティリクエスト</h3>
+    <div>
+      <p>リクエストタイトル：<%= @community_req.title %></p>
+      <p>説明：<%= @community_req.body %></p>
+      <p>投稿者：<%= @community_req.user.screen_name %>さん　　<%= @community_req.created_at.strftime('%Y/%m/%d') %></p>
+      <% if @community_req.update_status == "incomplete" %>
+        <p class="font-weight-bold text-success"><%= @community_req.update_status_i18n %></p>
+      <% elsif @community_req.update_status == "on_hold" %>
+        <p class="font-weight-bold text-primary"><%= @community_req.update_status_i18n %></p>
+      <% else %>
+        <p class="font-weight-bold text-secondary"><%= @community_req.update_status_i18n %></p>
+      <% end %>
+      <div class="add-font-rocknroll">
+       <%= link_to "状態の変更", edit_admin_community_req_path(@community_req), class: "btn btn-success mb-3" %>
+       <%= link_to "削除", admin_community_req_path(@community_req), method: :delete, class: "btn btn-danger mb-3" %>
+      </div>
+      <div class="row mt-3"></div>
+    </div>
+
+  </div>
 </div>
