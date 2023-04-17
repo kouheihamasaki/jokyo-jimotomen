@@ -1,25 +1,24 @@
-<div class='container add-font'>
+<div class='container add-font-raggae'>
   <div class='row'>
-    <div class="col-md-8 mx-auto my-5">
-      <h3 class="my-5"><mark class="bg-light">状態の変更</mark></h3>
+    <div class="col-md-10 mx-auto my-2">
+      <h3 class="my-2 midashi">状態の変更</h3>
         <div class="ml-3">
           <div class="mb-5 px-3">
-          <%= form_with model: @community_req, url: admin_community_req_path, method: :patch do |f| %>
-
-          <div class="form-inline my-3">
-          <label class="font-weight-bold justify-content-start" style="width:20%">ステータスの更新</label>
-          <%= f.radio_button :update_status, :"incomplete", checked: "checked" %>
-          <%= f.label :未作成, class: "update_status_label" %>
-          
-          <%= f.radio_button :update_status, :"on_hold" %>
-          <%= f.label :保留中, class: "update_status_label" %>
-          
-          <%= f.radio_button :update_status, :"complete" %>
-          <%= f.label :作成済, class: "update_status_label" %>
-          </div>
+            <%= form_with model: @community_req, url: admin_community_req_path, method: :patch do |f| %>
+            <div class="form-inline my-5 mb-3 add-font-rocknroll">
+              <label class="font-weight-bold justify-content-start mr-2" style="width:20%">ステータスの更新</label>
+              <%= f.radio_button :update_status, :"incomplete", checked: "checked" %>
+              <%= f.label :未作成, class: "update_status_label mr-2" %>
       
-            <div class="text-center">
-              <%= f.submit '  変更を保存  ', class: "btn btn-outline-success" %>
+              <%= f.radio_button :update_status, :"on_hold" %>
+              <%= f.label :保留中, class: "update_status_label mr-2" %>
+      
+              <%= f.radio_button :update_status, :"complete" %>
+              <%= f.label :作成済, class: "update_status_label" %>
+            </div>
+
+            <div class="add-font-rocknroll mt-5">
+              <%= f.submit '  変更を保存  ', class: "btn btn-success mb-3" %>
             </div>
           <% end %>
         </div>

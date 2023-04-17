@@ -20,5 +20,8 @@
     <div class="col-2 mx-auto">
       <%= paginate @community_reqs %>
     </div>
+    <div>
+     <%= link_to "新しいコミュニティの作成", new_admin_community_path, class: 'btn btn-outline-secondary mb-3' %>
+    </div>
   </div>
 </div>
