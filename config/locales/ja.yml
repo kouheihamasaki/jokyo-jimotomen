@@ -5,3 +5,8 @@
           incomplete: "未作成"
           on_hold: "保留中"
           complete: "作成済"
+      tag:
+        tag_kind:
+          prefecture: "都道府県"
+          genre: "ジャンル"
+          others_tag: "その他"
