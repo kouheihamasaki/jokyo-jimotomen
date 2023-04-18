@@ -71,6 +71,8 @@ gem "geocoder"
 
 gem "dotenv-rails"
 
+gem 'rename'
+
 group :production do
   gem 'mysql2'
 end

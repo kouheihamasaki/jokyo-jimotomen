@@ -7,4 +7,4 @@ test:
 production:
   adapter: redis
   url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
-  channel_prefix: jokyo_jimotomen_production
+  channel_prefix: jokyoshitemo_jimotomen_production
