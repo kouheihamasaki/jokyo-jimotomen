@@ -45,10 +45,15 @@
           </script>
             <div class="add-font-rocknroll">
               <h6><%= post.body.truncate(39) %></h6>
-              <h6 class="">
-                <% post.tags.each do |tag| %>
-                <span class="tag-dez"><%= tag.name %></span>
-                <% end %></h6>
+              <div class="tag-input">
+                <h6 class="">
+                  <% post.tags.each do |tag| %>
+                    <span class="tag-dez"><%= tag.name %></span>
+                  <% end %>
+                  <small class="text-muted text-right">💛<%= post.favorite.count %></small>
+                </h6>
+              </div>
+
             </div>
           </div>
         </div>

@@ -2,18 +2,130 @@
   <div class="row">
 
    <div class="col-md-9">
-   <h2>TOP PAGE</h2>
-   <div>
-    <%= link_to '投稿フォーム', new_post_path %>
-   </div>
- </div>
- 
- 
-  <%= render 'sidebar', user: @user %>
+    <h2 class="midashi mt-3">東京でも地元麺を食べよう！</h2>
 
-  
+    <h3 class="mt-2">みんなの人気記事</h3>
+      <% @posts_fav_tops.each do |post| %>
+      <div class="row border-top mt-2">
+        <div class="col-3 img-container img">
+          <%= link_to post_path(post.id) do %>
+           <%= image_tag post.get_image(300,200) %>
+          <% end %>
+        </div>
+        <div class="col-9">
+          <h5 class="">
+            <%= link_to post_path(post.id) do %>
+             <%= post.shop_name %>
+            <% end %>
+          </h5>
+          <p class="font-weight-bold lead"><%= post.title %></p>
+          <div class="row ml-2">
+            <div class="col-5">
+              <div class="row">
+                <div id="top-top-stars<%= post.id%>"></div>
+                <h5 class="font-red">　星<%= post.star %>ツ！</h5>
+              </div>
+            </div>
+            <div class="col-5 offset-md-2">
+              <h6 class=""><small class="text-muted text-right">
+                <%= image_tag post.user.get_profile_image(40,40) %>
+                <%= post.user.screen_name %>さんの投稿
+              </small></h6>
+            </div>
+          </div>
+        <script>
+          let topRateElement<%= post.id%> = document.querySelector('#top-top-stars<%= post.id%>');
+          let topOpt<%= post.id%> = {
+          starOn: "<%= asset_path('star-on.png') %>",
+          starOff: "<%= asset_path('star-off.png') %>",
+          scoreName: 'post[star]',
+          score: "<%= post.star %>",
+          readOnly: true
+          };
+          window.raty(topRateElement<%= post.id%>, topOpt<%= post.id%>);
+        </script>
+          <div class="add-font-rocknroll">
+            <h6><%= post.body.truncate(39) %></h6>
+            <div class="tag-input">
+              <h6 class="">
+                <% post.tags.each do |tag| %>
+                  <span class="tag-dez"><%= tag.name %></span>
+                <% end %>
+                <small class="text-muted text-right">💛<%= post.favorite.count %></small>
+              </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
 
+      <h3 class="mt-2">新着記事</h3>
+      <% @posts_new.each do |post| %>
+      <div class="row border-top mt-2">
+        <div class="col-3 img-container img">
+          <%= link_to post_path(post.id) do %>
+           <%= image_tag post.get_image(300,200) %>
+          <% end %>
+        </div>
+        <div class="col-9">
+          <h5 class="">
+            <%= link_to post_path(post.id) do %>
+             <%= post.shop_name %>
+            <% end %>
+          </h5>
+          <p class="font-weight-bold lead"><%= post.title %></p>
+          <div class="row ml-2">
+            <div class="col-5">
+              <div class="row">
+                <div id="top-new-stars<%= post.id%>"></div>
+                <h5 class="font-red">　星<%= post.star %>ツ！</h5>
+              </div>
+            </div>
+            <div class="col-5 offset-md-2">
+              <h6 class=""><small class="text-muted text-right">
+                <%= image_tag post.user.get_profile_image(40,40) %>
+                <%= post.user.screen_name %>さんの投稿
+              </small></h6>
+            </div>
+          </div>
+        <script>
+          let newRateElement<%= post.id%> = document.querySelector('#top-new-stars<%= post.id%>');
+          let newOpt<%= post.id%> = {
+          starOn: "<%= asset_path('star-on.png') %>",
+          starOff: "<%= asset_path('star-off.png') %>",
+          scoreName: 'post[star]',
+          score: "<%= post.star %>",
+          readOnly: true
+          };
+          window.raty(newRateElement<%= post.id%>, newOpt<%= post.id%>);
+        </script>
+          <div class="add-font-rocknroll">
+            <h6><%= post.body.truncate(39) %></h6>
+            <div class="tag-input">
+              <h6 class="">
+                <% post.tags.each do |tag| %>
+                  <span class="tag-dez"><%= tag.name %></span>
+                <% end %>
+                <small class="text-muted text-right">💛<%= post.favorite.count %></small>
+              </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
 
+      <div class="row">
+        <div class="col-6">
+          <h3>ユーザー投稿ランキング</h3>
+          <% @user_ranks.each do |user| %>
+          <%= image_tag user.get_profile_image(100,100) %></th>
+          <% end %>
+        </div>
+      </div>
 
-   </div>
+    </div>
+
+      <%= render 'sidebar', user: @user %>
+
+  </div>
 </div>

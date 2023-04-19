@@ -43,6 +43,15 @@ p {
   display: block;
 }
 
+.img-container-user img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin: auto;
+  display: block;
+}
+
+
 
 .about-h2:first-letter {
   font-size: 150%;
@@ -61,7 +70,7 @@ p {
 }
 
 .px-num{
-    line-height: 25px
+  line-height: 25px
 }
 
 .midashi{
@@ -88,4 +97,8 @@ p {
 .tag-input{
   display: inline-block;
   margin-right: 5px;
+}
+
+.text-align-center{
+  text-align: center;
 }
