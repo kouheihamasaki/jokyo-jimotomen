@@ -58,9 +58,18 @@
           <h3>タグで投稿を絞る</h3>
           <div class="d-flex flex-column">
             <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
-              <% Tag.all.each do |t| %>
-                <%= check_box :tag_ids, t.name %><%= t.name %>
-              <% end %>
+          <h5>都道府県</h5>
+            <% @tag_pre.all.each do |t| %>
+              <%= check_box :tag_ids, t.name %><%= t.name %>
+            <% end %>
+          <h5>麺のジャンル</h5>
+            <% @tag_genre.all.each do |t| %>
+              <%= check_box :tag_ids, t.name %><%= t.name %>
+            <% end %>
+          <h5>みんなが作ったジャンル</h5>
+            <% @tag_others.all.each do |t| %>
+              <%= check_box :tag_ids, t.name %><%= t.name %>
+            <% end %>
           </div>
           <div class="add-font-rocknroll">
             <%= submit_tag '　　検索　　', class: "btn btn-outline-secondary mb-3" %>

@@ -5,6 +5,9 @@ class Public::PostsController < ApplicationController
     @post_all = Post.all
     @posts = Post.page(params[:page]).per(10)
     @user = current_user
+    @tag_pre = Tag.where(tag_kind: 0)
+    @tag_genre = Tag.where(tag_kind: 1)
+    @tag_others = Tag.where(tag_kind: 2)
 
     if params[:tag_ids]
       @posts = []
@@ -14,10 +17,6 @@ class Public::PostsController < ApplicationController
           @posts = @posts.empty? ? tag_posts : @posts & tag_posts
         end
       end
-    end
-
-    if params[:tag]
-      Tag.create(name: params[:tag])
     end
 
   end
@@ -38,6 +37,15 @@ class Public::PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @tags =Tag.all
+    @tag_pre = Tag.where(tag_kind: 0)
+    @tag_genre = Tag.where(tag_kind: 1)
+    @tag_others = Tag.where(tag_kind: 2)
+
+    if params[:tag]
+      Tag.create(name: params[:tag])
+    end
+
   end
 
   def create
@@ -75,6 +83,10 @@ class Public::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:shop_name, :image, :title, :body, :star, :adress, :latitude, :longitude, tag_ids: [])
+  end
+
+  def tag_params
+    params.require(:tag).permit(:name, :tag_kind)
   end
 
 end

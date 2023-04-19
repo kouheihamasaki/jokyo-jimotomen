@@ -11,10 +11,29 @@
     <h4 class="mt-2">投稿本文</h4>
       <%= f.text_area :body,:size=>"74x10", :placeholder => "博多豚骨ラーメン"%>
     <!--タグ部分-->
-    <h4 class="mt-2">タグの選択</h4>
+    <h4 class="mt-2">タグの選択<small>　※複数選択可能です</small></h4>
     <div class='form-group'>
-      <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-        <div class='form-check'>
+      <h5 class="mt-2">都道府県タグ</h5>
+      <%= f.collection_check_boxes(:tag_ids, @tag_pre.all, :id, :name) do |tag| %>
+        <div class='form-check tag-input'>
+          <%= tag.label class: 'form-check-label' do %>
+            <%= tag.check_box class: 'form-check-input' %>
+            <%= tag.text %>
+          <% end %>
+        </div>
+      <% end %>
+      <h5 class="mt-2">ジャンルタグ</h5>
+      <%= f.collection_check_boxes(:tag_ids, @tag_genre.all, :id, :name) do |tag| %>
+        <div class='form-check tag-input'>
+          <%= tag.label class: 'form-check-label' do %>
+            <%= tag.check_box class: 'form-check-input' %>
+            <%= tag.text %>
+          <% end %>
+        </div>
+      <% end %>
+      <h5 class="mt-2">みんなが作ったタグ</h5>
+      <%= f.collection_check_boxes(:tag_ids, @tag_others.all, :id, :name) do |tag| %>
+        <div class='form-check tag-input'>
           <%= tag.label class: 'form-check-label' do %>
             <%= tag.check_box class: 'form-check-input' %>
             <%= tag.text %>
@@ -45,5 +64,13 @@
     </div>
     <% end %>
   </div>
+
+      <h5 class="mt-2">新しいタグを作成する</h5>
+        <%= form_tag({controller:"posts",action:"new"}, method: :get) do %>
+          <%= text_field_tag :tag %>
+          <%= hidden_field_tag :tag_kind, :value => "others_tag" %>
+          <%= submit_tag 'タグを追加' %>
+        <% end %>
+        
 </div>
 
