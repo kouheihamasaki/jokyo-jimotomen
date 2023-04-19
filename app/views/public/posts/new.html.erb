@@ -68,9 +68,9 @@
       <h5 class="mt-2">新しいタグを作成する</h5>
         <%= form_tag({controller:"posts",action:"new"}, method: :get) do %>
           <%= text_field_tag :tag %>
-          <%= hidden_field_tag :tag_kind, :value => "others_tag" %>
+          <%= hidden_field_tag :tag_kind, "others_tag" %>
           <%= submit_tag 'タグを追加' %>
         <% end %>
-        
+
 </div>
 
