@@ -34,6 +34,10 @@
           <td class="table-info">メールアドレス</td>
           <td><%= @user.email %></td>
         </tr>
+        <tr>
+          <td class="table-info img-container-user img">プロフィール画像</td>
+          <td><%= image_tag @user.get_profile_image(100,100), class: "" %></td>
+        </tr>
       </table>
 
     </div>

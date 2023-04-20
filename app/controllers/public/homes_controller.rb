@@ -8,6 +8,9 @@ class Public::HomesController < ApplicationController
     @posts_fav_tops =@posts_fav.first(3)
     @user_post_tops = User.where(id: Post.group(:user_id).order('count(user_id) desc').pluck(:user_id))
     @user_ranks = @user_post_tops.first(3)
+    # サイドバー部分
+    post_fav_bests = current_user.post.sort { |a, b| b.favorite.count <=> a.favorite.count }
+    @post_fav_best = post_fav_bests.first(1)
   end
 
   def about

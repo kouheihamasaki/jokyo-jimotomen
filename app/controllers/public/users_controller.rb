@@ -48,7 +48,7 @@ class Public::UsersController < ApplicationController
     params.require(:user).permit(:last_name,:first_name,
                                      :last_name_kana,:first_name_kana,
                                      :introduction,:prefecture,:screen_name,
-                                     :fav_noodle,:email,:is_deleted)
+                                     :fav_noodle,:email,:is_deleted, :profile_image)
   end
 
 end

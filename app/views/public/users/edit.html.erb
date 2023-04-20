@@ -1,4 +1,4 @@
-<div class="container mt-5 add-font">
+<div class="container mt-5 add-font-rocknroll">
 
   <h2>会員情報編集</h2>
 
@@ -23,7 +23,7 @@
         <%= f.text_field :first_name_kana, required: true, autocomplete: "first_name_kana" %>
       </div>
     </div>
-    
+
     <div class="row mt-1">
       <p class="col-md-2">ユーザー名</p>
       <div class="field col-md-9">
@@ -37,7 +37,14 @@
         <%= f.text_area :introduction,:size=>"61x5", required: true, autocomplete: "introduction" %>
       </div>
     </div>
-    
+
+    <div class="row mt-1">
+      <p class="col-md-2">プロフィール画像</p>
+      <div class="field col-md-9">
+        <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
+      </div>
+    </div>
+
     <div class="row mt-1">
       <p class="col-md-2">好きな都道府県</p>
       <div class="field col-md-9">
