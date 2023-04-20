@@ -86,36 +86,17 @@
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap" async defer></script>
 
-    <div id= "favorites_buttons_<%= post.id %> mt-2 text-right">
-     <%= render "public/favorites/favorite", post: @post %>
+    <div id= "favorite-btn">
+     <%= render "public/favorites/favorite-btn", post: @post %>
     </div>
 
 
     <div class="">
       <p class="font-weight-bold border-bottom">コメント件数：<%= @post.post_comment.count %>件</p>
-      <% @post.post_comment.each do |post_comment| %>
-        <p class="">
-          <%= post_comment.comment %>
-        </p>
-        <div class="text-right">
-          <% if post_comment.user == current_user %>
-            <%= link_to "このコメントを削除する", post_post_comment_path(post_comment.post, post_comment), method: :delete, class: 'btn btn-outline-secondary ml-3 mb-3' %>
-          <% end %>
-        </div>
-        <h6 class="mb-2 text-right border-bottom text-muted">
-          <%= post_comment.user.screen_name %>
-          <%= post_comment.created_at.strftime('%Y/%m/%d') %>
-        </h6>
-      <% end %>
     </div>
-
-    <div class="add-font-rocknroll mb-3 border-bottom">
-      <%= form_with model: [@post, @post_comment] do |f| %>
-        <%= f.text_area :comment, :size=>"75", placeholder: "コメントする" %>
-        <%= f.submit "送信する" , class: 'btn btn-primary ml-1 mb-1' %>
-      <% end %>
+    <div id="book-comment">
+      <%= render "public/post_comments/comment", post: @post, post_comment: @post_comment %>
     </div>
-
     <div class="add-font-rocknroll text-right">
       <% if @post.user == current_user %>
         <%= link_to "この投稿を編集する", edit_post_path(@post), class: "btn btn-success mb-3" %>
