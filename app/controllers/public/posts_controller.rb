@@ -19,6 +19,10 @@ class Public::PostsController < ApplicationController
       end
     end
 
+    # サイドバー部分
+    post_fav_bests = current_user.post.sort { |a, b| b.favorite.count <=> a.favorite.count }
+    @post_fav_best = post_fav_bests.first(1)
+
   end
 
 
@@ -26,6 +30,11 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @user = current_user
     @post_comment = PostComment.new
+
+    # サイドバー部分
+    post_fav_bests = current_user.post.sort { |a, b| b.favorite.count <=> a.favorite.count }
+    @post_fav_best = post_fav_bests.first(1)
+
   end
 
   def edit
