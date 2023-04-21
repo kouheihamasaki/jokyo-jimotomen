@@ -1,9 +1,10 @@
-<div class="container px-5">
+<div class="container px-5 add-font-rocknroll ">
   <div class="row">
-
    <div class="col-md-9">
-    <h2 class="midashi mt-3">東京でも地元麺を食べよう！</h2>
-
+    <div class="text-align-right">
+      <%= link_to 'このサイトでできること', about_path, class: "btn btn-sm btn-outline-secondary mt-1 mb-1" %></h2>
+    </div>
+    <h2 class="midashi">東京でも地元麺を食べよう！</h2>
     <h3 class="mt-2">・みんなの人気記事</h3>
       <% @posts_fav_tops.each do |post| %>
       <div class="row border-top mt-2">
@@ -28,7 +29,7 @@
             </div>
             <div class="col-5 offset-md-2">
               <h6 class=""><small class="text-muted text-right">
-                <%= image_tag post.user.get_profile_image(40,40) %>
+                <%= image_tag post.user.get_profile_image(35,35) %>
                 <%= post.user.screen_name %>さんの投稿
               </small></h6>
             </div>
@@ -59,7 +60,7 @@
       </div>
       <% end %>
 
-      <h3 class="mt-2">・新着記事</h3>
+      <h3 class="mt-4">・新着記事</h3>
       <% @posts_new.each do |post| %>
       <div class="row border-top mt-2">
         <div class="col-3 img-container img">
@@ -83,7 +84,7 @@
             </div>
             <div class="col-5 offset-md-2">
               <h6 class=""><small class="text-muted text-right">
-                <%= image_tag post.user.get_profile_image(40,40) %>
+                <%= image_tag post.user.get_profile_image(35,35) %>
                 <%= post.user.screen_name %>さんの投稿
               </small></h6>
             </div>
@@ -114,15 +115,69 @@
       </div>
       <% end %>
 
-      <div class="row">
-        <div class="col-6">
-          <h3>・ユーザー投稿ランキング</h3>
-          <% @user_ranks.each do |user| %>
-          <%= image_tag user.get_profile_image(100,100) %></th>
+      <h3 class="mt-4">・ピックアップレビュー</h3>
+      <div class="row border-top mt-2">
+        <div class="col-3 img-container img">
+          <%= link_to post_path(@sample_post.id) do %>
+           <%= image_tag @sample_post.get_image(300,200) %>
           <% end %>
+        </div>
+        <div class="col-9">
+          <h5 class="">
+            <%= link_to post_path(@sample_post.id) do %>
+             <%= @sample_post.shop_name %>
+            <% end %>
+          </h5>
+          <p class="font-weight-bold lead"><%= @sample_post.title %></p>
+          <div class="row ml-2">
+            <div class="col-5">
+              <div class="row">
+                <div id="top-pick-stars<%= @sample_post.id%>"></div>
+                <h5 class="font-red">　星<%= @sample_post.star %>ツ！</h5>
+              </div>
+            </div>
+            <div class="col-5 offset-md-2">
+              <h6 class=""><small class="text-muted text-right">
+                <%= image_tag @sample_post.user.get_profile_image(35,35) %>
+                <%= @sample_post.user.screen_name %>さんの投稿
+              </small></h6>
+            </div>
+          </div>
+        <script>
+          let pickRateElement<%= @sample_post.id%> = document.querySelector('#top-pick-stars<%= @sample_post.id%>');
+          let pickOpt<%= @sample_post.id%> = {
+          starOn: "<%= asset_path('star-on.png') %>",
+          starOff: "<%= asset_path('star-off.png') %>",
+          scoreName: 'post[star]',
+          score: "<%= @sample_post.star %>",
+          readOnly: true
+          };
+          window.raty(pickRateElement<%= @sample_post.id%>, pickOpt<%= @sample_post.id%>);
+        </script>
+          <div class="add-font-rocknroll">
+            <h6><%= @sample_post.body.truncate(36, omission: "...") %></h6>
+            <div class="tag-input">
+              <h6 class="">
+                <% @sample_post.tags.each do |tag| %>
+                  <span class="tag-dez"><%= tag.name %></span>
+                <% end %>
+                <small class="text-muted text-right">💛<%= @sample_post.favorite.count %></small>
+              </h6>
+            </div>
+          </div>
         </div>
       </div>
 
+      <div class="row ml-8 mt-5">
+        <h4>　みんなの投稿をもっと見る！！</h4>
+        <div class="field col-md-10 offset-md-1 mt-1 mb-3 add-font-rocknroll">
+          <%= link_to 'みんなの投稿一覧へ', posts_path, class: "btn btn-warning btn-sm btn-block mb-3" %>
+        </div>
+        <h4>　地元麺のお店を投稿する！！</h4>
+        <div class="field col-md-10 offset-md-1 mb-3 add-font-rocknroll">
+         <%= link_to '新規投稿フォームへ', new_post_path, class: "btn btn-warning btn-sm btn-block mb-5" %>
+        </div>
+      </div>
     </div>
 
       <%= render 'sidebar', user: @user, post_fav_best: @post_fav_best %>

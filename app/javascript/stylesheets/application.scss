@@ -97,7 +97,11 @@ p {
 }
 
 .text-align-center{
-  text-align: center;
+  text-align:center;
+}
+
+.text-align-right{
+  text-align:right;
 }
 
 .footer {
@@ -111,4 +115,12 @@ font-family: 'Reggae One', cursive;
 .inner{
   text-align:center;
   padding:40px 0;
+}
+
+.btn-area{
+ margin-right:20px;
+}
+
+.maker-line {
+  background:linear-gradient(transparent 60%, #ff6 60%);
 }

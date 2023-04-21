@@ -1,10 +1,10 @@
 <div class="container mt-5 add-font-rocknroll">
 
-  <h2>会員情報編集</h2>
+  <h2 class="midashi">会員情報編集</h2>
 
   <%= form_with model: @user, url: information_users_path do |f| %>
 
-    <div class="row mt-5">
+    <div class="row mt-4">
       <p class="col-md-2">氏名</p>
       <div class="col-md-3">
         <%= f.text_field :last_name, autofocus: true, required: true, autocomplete: "last_name" %>
@@ -66,7 +66,7 @@
       </div>
     </div>
 
-    <div class="actions row mt-1">
+    <div class="actions row mt-1 mb-5">
       <div class="col-md-2"></div>
       <div class="field col-md-5">
         <%= f.submit "編集内容を保存", class: "btn btn-success" %>
