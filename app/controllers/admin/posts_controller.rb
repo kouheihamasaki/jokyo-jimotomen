@@ -4,7 +4,10 @@ class Admin::PostsController < ApplicationController
     @post_all = Post.all
     @posts = Post.page(params[:page]).per(10)
     @user = current_user
-    
+    @tag_pre = Tag.where(tag_kind: 0)
+    @tag_genre = Tag.where(tag_kind: 1)
+    @tag_others = Tag.where(tag_kind: 2)
+
     if params[:tag_ids]
       @posts = []
       params[:tag_ids].each do |key, value|
@@ -14,13 +17,13 @@ class Admin::PostsController < ApplicationController
         end
       end
     end
-    
+
     if params[:tag]
       Tag.create(name: params[:tag])
     end
-    
+
   end
-  
+
   def show
     @post = Post.find(params[:id])
     @user = current_user
@@ -35,5 +38,5 @@ class Admin::PostsController < ApplicationController
     render :show
     end
   end
-  
+
 end

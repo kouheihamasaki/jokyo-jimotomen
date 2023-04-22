@@ -20,7 +20,7 @@
           <div class="row ml-2">
             <div class="col-5">
               <div class="row">
-                <div id="top-top-stars<%= post.id%>"></div>
+                <div id="admin-top-top-stars<%= post.id%>"></div>
                 <h5 class="font-red">　星<%= post.star %>ツ！</h5>
               </div>
             </div>
@@ -32,8 +32,8 @@
             </div>
           </div>
         <script>
-          let topRateElement<%= post.id%> = document.querySelector('#top-top-stars<%= post.id%>');
-          let topOpt<%= post.id%> = {
+          var topRateElement<%= post.id%> = document.querySelector('#admin-top-top-stars<%= post.id%>');
+          var topOpt<%= post.id%> = {
           starOn: "<%= asset_path('star-on.png') %>",
           starOff: "<%= asset_path('star-off.png') %>",
           scoreName: 'post[star]',
@@ -87,8 +87,8 @@
             </div>
           </div>
         <script>
-          let newRateElement<%= post.id%> = document.querySelector('#top-new-stars<%= post.id%>');
-          let newOpt<%= post.id%> = {
+          var newRateElement<%= post.id%> = document.querySelector('#top-new-stars<%= post.id%>');
+          var newOpt<%= post.id%> = {
           starOn: "<%= asset_path('star-on.png') %>",
           starOff: "<%= asset_path('star-off.png') %>",
           scoreName: 'post[star]',
@@ -141,8 +141,8 @@
             </div>
           </div>
         <script>
-          let pickRateElement<%= @sample_post.id%> = document.querySelector('#top-pick-stars<%= @sample_post.id%>');
-          let pickOpt<%= @sample_post.id%> = {
+          var pickRateElement<%= @sample_post.id%> = document.querySelector('#top-pick-stars<%= @sample_post.id%>');
+          var pickOpt<%= @sample_post.id%> = {
           starOn: "<%= asset_path('star-on.png') %>",
           starOff: "<%= asset_path('star-off.png') %>",
           scoreName: 'post[star]',

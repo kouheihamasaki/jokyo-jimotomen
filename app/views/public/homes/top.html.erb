@@ -35,15 +35,15 @@
             </div>
           </div>
         <script>
-          let topRateElement<%= post.id%> = document.querySelector('#top-top-stars<%= post.id%>');
-          let topOpt<%= post.id%> = {
+          var topRateElement = document.querySelector('#top-top-stars<%= post.id%>');
+          var topOpt = {
           starOn: "<%= asset_path('star-on.png') %>",
           starOff: "<%= asset_path('star-off.png') %>",
           scoreName: 'post[star]',
           score: "<%= post.star %>",
           readOnly: true
           };
-          window.raty(topRateElement<%= post.id%>, topOpt<%= post.id%>);
+          window.raty(topRateElement, topOpt);
         </script>
           <div class="add-font-rocknroll">
             <h6><%= post.body.truncate(36, omission: "...") %></h6>
@@ -90,15 +90,15 @@
             </div>
           </div>
         <script>
-          let newRateElement<%= post.id%> = document.querySelector('#top-new-stars<%= post.id%>');
-          let newOpt<%= post.id%> = {
+          var newRateElement = document.querySelector('#top-new-stars<%= post.id%>');
+          var newOpt = {
           starOn: "<%= asset_path('star-on.png') %>",
           starOff: "<%= asset_path('star-off.png') %>",
           scoreName: 'post[star]',
           score: "<%= post.star %>",
           readOnly: true
           };
-          window.raty(newRateElement<%= post.id%>, newOpt<%= post.id%>);
+          window.raty(newRateElement, newOpt);
         </script>
           <div class="add-font-rocknroll">
             <h6><%= post.body.truncate(36, omission: "...") %></h6>
@@ -144,15 +144,15 @@
             </div>
           </div>
         <script>
-          let pickRateElement<%= @sample_post.id%> = document.querySelector('#top-pick-stars<%= @sample_post.id%>');
-          let pickOpt<%= @sample_post.id%> = {
+          var pickRateElement = document.querySelector('#top-pick-stars<%= @sample_post.id%>');
+          var pickOpt = {
           starOn: "<%= asset_path('star-on.png') %>",
           starOff: "<%= asset_path('star-off.png') %>",
           scoreName: 'post[star]',
           score: "<%= @sample_post.star %>",
           readOnly: true
           };
-          window.raty(pickRateElement<%= @sample_post.id%>, pickOpt<%= @sample_post.id%>);
+          window.raty(pickRateElement, pickOpt);
         </script>
           <div class="add-font-rocknroll">
             <h6><%= @sample_post.body.truncate(36, omission: "...") %></h6>

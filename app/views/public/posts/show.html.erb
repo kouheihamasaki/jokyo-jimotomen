@@ -21,8 +21,8 @@
       <h4 class="font-red">　星<%= @post.star %>ツ！</h4>
     </div>
       <script>
-        let showRateElement = document.querySelector('#show-stars');
-        let showOpt = {
+        var showRateElement = document.querySelector('#show-stars');
+        var showOpt = {
         starOn: "<%= asset_path('star-on.png') %>",
         starOff: "<%= asset_path('star-off.png') %>",
         scoreName: 'post[star]',
@@ -94,7 +94,7 @@
     <div class="">
       <p class="font-weight-bold border-bottom">コメント件数：<%= @post.post_comment.count %>件</p>
     </div>
-    <div id="book-comment">
+    <div id="post-comment">
       <%= render "public/post_comments/comment", post: @post, post_comment: @post_comment %>
     </div>
     <div class="add-font-rocknroll text-right">
