@@ -12,6 +12,9 @@
     <%= user.introduction %>
   </div>
   <div class="add-font-rocknroll mt-3">
+    <h6>推し麺　:　<%= user.fav_noodle %></h6>
+  </div>
+  <div class="add-font-rocknroll mt-3">
     <h6>投稿数　:　<%= user.post.count %></h6>
   </div>
   <div class="add-font-rocknroll mt-3">
@@ -26,13 +29,19 @@
       <h6 class="font-weight-bold maker-line"><%= user.screen_name %>さんの</h6>
       <h6 class="font-weight-bold maker-line">いいねベスト１位投稿</h6>
     </div>
-    <div class="mt-3 font-blue border-bottom text-align-center">
+    <div class="mt-3 font-blue text-align-center">
       <%= post_fav_best.first.title %>
     </div>
     <div class="col-3 img-container img mt-3">
       <%= link_to post_path(post_fav_best.first.id) do %>
        <%= image_tag post_fav_best.first.get_image(200,200) %>
       <% end %>
+    </div>
+    <div class="mt-3 font-blue text-align-center">
+      <h6>
+        💛<%= post_fav_best.first.favorite.count %>
+        💬<%= post_fav_best.first.post_comment.count %>
+      </h6>
     </div>
 
     <div class="row mt-3">
