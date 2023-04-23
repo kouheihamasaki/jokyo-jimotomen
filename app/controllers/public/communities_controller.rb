@@ -9,6 +9,11 @@ class Public::CommunitiesController < ApplicationController
     # サイドバー部分
     post_fav_bests = current_user.post.sort { |a, b| b.favorite.count <=> a.favorite.count }
     @post_fav_best = post_fav_bests.first(1)
+    @user_posts = @user.post
+    @favorites_count = 0
+    @user_posts.each do |post|
+      @favorites_count += post.favorite.count
+    end
   end
 
   def show
@@ -19,6 +24,11 @@ class Public::CommunitiesController < ApplicationController
     # サイドバー部分
     post_fav_bests = current_user.post.sort { |a, b| b.favorite.count <=> a.favorite.count }
     @post_fav_best = post_fav_bests.first(1)
+    @user_posts = @user.post
+    @favorites_count = 0
+    @user_posts.each do |post|
+      @favorites_count += post.favorite.count
+    end
   end
 
 
