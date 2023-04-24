@@ -20,6 +20,7 @@ class Public::CommunitiesController < ApplicationController
     @user = current_user
     @community = Community.find(params[:id])
     @community_comment = CommunityComment.new
+    @communities = Community.page(params[:page]).per(10)
 
     # サイドバー部分
     post_fav_bests = current_user.post.sort { |a, b| b.favorite.count <=> a.favorite.count }

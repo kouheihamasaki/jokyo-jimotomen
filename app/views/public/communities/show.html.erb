@@ -24,6 +24,9 @@
         </div>
       <% end %>
       </div>
+      <div>
+        <%= paginate community_comments %>
+      </div>
       <div class="add-font-rocknroll mb-3 border-bottom">
         <%= form_with model: [@community, @community_comment] do |f| %>
           <%= f.text_area :comment, :size=>"75" %>
