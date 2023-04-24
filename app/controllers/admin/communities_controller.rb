@@ -2,12 +2,13 @@ class Admin::CommunitiesController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @communities = Community.page(params[:page])
+    @communities = Community.page(params[:page]).per(5)
     @community_all = Community.all
   end
 
   def show
     @community = Community.find(params[:id])
+    @community_comments = CommunityComment.page(params[:page]).per(20)
   end
 
   def new
@@ -36,7 +37,7 @@ class Admin::CommunitiesController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     @community = Community.find(params[:id])
     if @community.destroy

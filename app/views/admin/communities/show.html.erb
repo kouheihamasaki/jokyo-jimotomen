@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container add-font-rocknroll">
   <div class="row">
     <div class="col-12">
       <div>
@@ -12,7 +12,7 @@
       </div>
       <div>
         <h6 class="border-bottom">コメント件数：<%= @community.community_comment.count %></h6>
-        <% @community.community_comment.each do |community_comment| %>
+        <% @community_comments.each do |community_comment| %>
         <p class="">
           <%= community_comment.comment %>
         </p>
@@ -24,6 +24,9 @@
           <%= community_comment.created_at.strftime('%Y/%m/%d') %>
         </h6>
         <% end %>
+      </div>
+      <div>
+        <%= paginate @community_comments %>
       </div>
     </div>
   </div>

@@ -134,3 +134,22 @@ p {
 .maker-line {
   background:linear-gradient(transparent 60%, #ff6 60%);
 }
+
+.pagination {
+  justify-content: center;
+}
+
+.pagination>li>a {
+  border: none;
+  color: #696969;
+}
+
+.pagination>.active>a {
+  background: #93c9ff;
+  border-radius: 15px;
+}
+
+.pagination>li>a:hover {
+  background: #93c9ff;
+  border-radius: 15px;
+}
