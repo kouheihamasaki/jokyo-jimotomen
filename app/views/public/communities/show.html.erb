@@ -9,7 +9,7 @@
       </div>
       <div>
         <h6 class="">コメント件数：<%= @community.community_comment.count %></h6>
-        <% @community.community_comment.each do |community_comment| %>
+        <% @community_comments.each do |community_comment| %>
         <p class="">
           <%= community_comment.comment %>
         </p>
@@ -25,7 +25,7 @@
       <% end %>
       </div>
       <div>
-        <%= paginate community_comments %>
+        <%= paginate @community_comments %>
       </div>
       <div class="add-font-rocknroll mb-3 border-bottom">
         <%= form_with model: [@community, @community_comment] do |f| %>

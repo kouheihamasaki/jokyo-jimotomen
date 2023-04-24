@@ -3,7 +3,7 @@ class Public::PostsController < ApplicationController
 
   def index
     @post_all = Post.all
-    @posts = Post.page(params[:page]).per(10)
+    @posts = Post.page(params[:page]).per(4)
     @user = current_user
     @tag_pre = Tag.where(tag_kind: 0)
     @tag_genre = Tag.where(tag_kind: 1)
@@ -25,7 +25,7 @@ class Public::PostsController < ApplicationController
     @user_posts = @user.post
     @favorites_count = 0
     @user_posts.each do |post|
-      @favorites_count += post.favorites.count
+      @favorites_count += post.favorite.count
     end
   end
 
