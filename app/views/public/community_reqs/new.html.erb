@@ -2,6 +2,14 @@
   <div class="row">
     <h2 class="midashi col-auto mt-2">新コミュニティ要望フォーム</h2>
   </div>
+  <% if @community_req.errors.any? %>
+    <%= @community_req.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @community_req.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
   <div class="row">
     <%= form_with model: @community_req do |f| %>
       <h4 class="mt-4">新しいコミュニティの名前</h4>
@@ -10,7 +18,7 @@
       <%= f.text_area :body,:size=>"74x10" %>
       <%= f.hidden_field :update_status, :value => "incomplete" %>
       <div class="add-font-rocknroll mt-4">
-        <%= f.submit '投稿', class: "text-dark btn btn-outline-success btn-lg" %>
+        <%= f.submit '投稿', class: "text-dark btn btn-outline-success btn-lg mb-3" %>
       </div>
     <% end %>
   </div>

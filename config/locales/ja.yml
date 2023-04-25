@@ -19,3 +19,6 @@
           star: ５段階評価
           adress: 住所
           image: 画像
+        community_req:
+          title: タイトル
+          body: 本文

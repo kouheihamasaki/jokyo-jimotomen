@@ -3,7 +3,7 @@ class Public::PostsController < ApplicationController
 
   def index
     @post_all = Post.all
-    @posts = Post.page(params[:page]).per(4)
+    @posts = Post.page(params[:page]).per(10)
     @user = current_user
     @tag_pre = Tag.where(tag_kind: 0)
     @tag_genre = Tag.where(tag_kind: 1)
@@ -58,9 +58,6 @@ class Public::PostsController < ApplicationController
     @tag_pre = Tag.where(tag_kind: 0)
     @tag_genre = Tag.where(tag_kind: 1)
     @tag_others = Tag.where(tag_kind: 2)
-
-
-
   end
 
   def create

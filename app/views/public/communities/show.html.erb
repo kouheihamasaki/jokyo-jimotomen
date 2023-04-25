@@ -1,6 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-9">
+      <% if @community_comment.errors.any? %>
+        <%= @community_comment.errors.count %>件のエラーが発生しました
+        <ul>
+        <% @community_comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+        </ul>
+      <% end %>
       <div>
         <h3 class="mt-3 midashi"><%= @community.title %></h3>
         <h5 class="font-blue">対象都道府県：<%= @community.prefecture %></h5>
@@ -27,7 +35,7 @@
       <div>
         <%= paginate @community_comments %>
       </div>
-      <div class="add-font-rocknroll mb-3 border-bottom">
+      <div class="add-font-rocknroll mt-4 mb-3 border-bottom">
         <%= form_with model: [@community, @community_comment] do |f| %>
           <%= f.text_area :comment, :size=>"75" %>
           <%= f.submit "送信する" , class: 'btn btn-primary ml-1 mb-1' %>
