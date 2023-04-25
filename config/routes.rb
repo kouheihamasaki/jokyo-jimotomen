@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:show, :index, :destroy] do
       resources :post_comments, only: [:destroy]
     end
+    get "search" => "searches#search"
     resources :tags, only: [:create, :destroy]
     resources :communities, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
       resources :community_comments, only: [:destroy]
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
      resource :favorites, only: [:create, :destroy]
      resources :post_comments, only: [:create, :destroy]
    end
+   get "search" => "searches#search"
    resources :tags, only: [:create, :destroy]
    resources :communities, only: [:index, :show] do
      resources :community_comments, only: [:create, :destroy]

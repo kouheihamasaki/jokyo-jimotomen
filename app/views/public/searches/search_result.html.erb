@@ -1,0 +1,80 @@
+<div class="container add-font-rocknroll">
+  <div class="row">
+
+    <div class="col-9">
+      <h2 class="midashi col-auto mt-2">「<%= @result_word %>」の検索結果</h2>
+        <% if @range == "投稿記事" %>
+          <h6 class="mt-3">（<%= @posts.count %>件を表示）</h6>
+          <% @posts.each do |post| %>
+          <div class="row border-top mt-2">
+          <div class="col-3 img-container img">
+            <%= link_to post_path(post.id) do %>
+             <%= image_tag post.get_image(300,200) %>
+            <% end %>
+          </div>
+          <div class="col-9">
+            <h5 class="">
+              <%= link_to post_path(post.id) do %>
+               <%= post.shop_name %>
+              <% end %>
+            </h5>
+            <p class="font-weight-bold lead"><%= post.title %></p>
+            <div class="row ml-2">
+              <div class="col-5">
+                <div class="row">
+                  <div id="search-stars<%= post.id%>"></div>
+                  <h5 class="font-red">　星<%= post.star %>ツ！</h5>
+                </div>
+              </div>
+              <div class="col-5 offset-md-2">
+                <h6 class=""><small class="text-muted text-right">
+                  <%= image_tag post.user.get_profile_image(40,40) %>
+                  <%= post.user.screen_name %>さんの投稿
+                </small></h6>
+              </div>
+            </div>
+          <script>
+            var searchRateElement<%= post.id%> = document.querySelector('#search-stars<%= post.id%>');
+            var searchOpt<%= post.id%> = {
+            starOn: "<%= asset_path('star-on.png') %>",
+            starOff: "<%= asset_path('star-off.png') %>",
+            scoreName: 'post[star]',
+            score: "<%= post.star %>",
+            readOnly: true
+            };
+            window.raty(searchRateElement<%= post.id%>, searchOpt<%= post.id%>);
+          </script>
+            <div class="add-font-rocknroll">
+              <h6><%= post.body.truncate(39) %></h6>
+              <div class="tag-input">
+                <h6 class="">
+                  <% post.tags.each do |tag| %>
+                    <span class="tag-dez"><%= tag.name %></span>
+                  <% end %>
+                  <small class="text-muted text-right">💛<%= post.favorite.count %></small>
+                </h6>
+              </div>
+            </div>
+          </div>
+          </div>
+          <% end %>
+        <% else %>
+          <h6 class="mt-3">（<%= @communities.count %>件を表示）</h6>
+          <% @communities.each do |community| %>
+            <div class="border-top mt-2">
+              <h5 class="font-blue">
+                <%= link_to community_path(community), class:'text-reset', style:"text-decoration: underline" do %>
+                 <%= community.title %>
+                <% end %>
+              </h5>
+              <p>対象都道府県：<%= community.prefecture %></p>
+              <p><%= community.introduction %></p>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+    <%= render 'public/homes/sidebar', user: @user, post_fav_best: @post_fav_best %>
+
+  </div>
+</div>

@@ -4,13 +4,13 @@ class Post < ApplicationRecord
   has_many   :tags, through: :post_tags, dependent: :destroy
   has_many   :post_comment, dependent: :destroy
   has_many   :favorite, dependent: :destroy
-  
+
   has_one_attached :image
-  
+
   geocoded_by :adress
   after_validation :geocode
-  
-  
+
+
   def get_image(width,height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image_jokyo-jimotomen.jpg')
@@ -18,11 +18,14 @@ class Post < ApplicationRecord
     end
       image.variant(resize_to_limit: [width, height]).processed
   end
-  
+
   def favorited_by?(user)
     favorite.exists?(user_id: user.id)
   end
-  
+
+  def self.looks(word)
+    @post = Post.where("title LIKE?","%#{word}%")
+  end
+
 end
- 
- 
+
