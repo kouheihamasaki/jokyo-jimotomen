@@ -10,3 +10,12 @@
           prefecture: "都道府県"
           genre: "ジャンル"
           others_tag: "その他"
+    activerecord:
+      attributes:
+        post:
+          title: タイトル
+          body: 本文
+          shop_name: 店名
+          star: ５段階評価
+          adress: 住所
+          image: 画像
