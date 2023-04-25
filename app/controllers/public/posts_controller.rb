@@ -67,8 +67,12 @@ class Public::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @tags =Tag.all
+    @tag_pre = Tag.where(tag_kind: 0)
+    @tag_genre = Tag.where(tag_kind: 1)
+    @tag_others = Tag.where(tag_kind: 2)
     @post.user_id = current_user.id
-    if @post.save!
+    if @post.save
     redirect_to posts_path
     else
     render :new

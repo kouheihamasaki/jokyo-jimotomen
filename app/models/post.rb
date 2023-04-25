@@ -7,6 +7,14 @@ class Post < ApplicationRecord
 
   has_one_attached :image
 
+  validates :title, presence: true
+  validates :body, presence: true
+  validates :image, presence: true
+  validates :shop_name, presence: true
+  validates :image, presence: true
+  validates :star, presence: true
+  validates :adress, presence: true
+
   geocoded_by :adress
   after_validation :geocode
 
