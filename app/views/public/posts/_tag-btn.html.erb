@@ -1,0 +1,7 @@
+<h5 class="">新しいタグを作成する</h5>
+<%= form_with url: tags_path, method: :post, local: false do |f| %>
+  <%= text_field_tag :tag %>
+  <%= hidden_field_tag :tag_kind, "others_tag" %>
+  <%= submit_tag 'タグを追加', class: 'btn btn-outline-secondary' %>
+
+<% end %>

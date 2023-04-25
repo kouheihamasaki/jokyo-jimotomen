@@ -59,9 +59,7 @@ class Public::PostsController < ApplicationController
     @tag_genre = Tag.where(tag_kind: 1)
     @tag_others = Tag.where(tag_kind: 2)
 
-    if params[:tag]
-      Tag.create(name: params[:tag], tag_kind: params[:tag_kind])
-    end
+
 
   end
 

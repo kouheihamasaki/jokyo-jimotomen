@@ -11,7 +11,9 @@
     </ul>
   <% end %>
   <div class="row">
+    <% f1 = nil%>
     <%= form_with model: @post do |f| %>
+    <% fi = f%>
     <h4 class="mt-3">投稿タイトル</h4>
       <%= f.text_field :title, :size=>"72", autofocus: true %>
     <h4 class="mt-3">ショップ名</h4>
@@ -56,15 +58,11 @@
         </div>
       <% end %>
       <h5 class="mt-2">・みんなが作ったタグ</h5>
-      <%= f.collection_check_boxes(:tag_ids, @tag_others.all, :id, :name) do |tag| %>
-        <div class='form-check tag-input'>
-          <%= tag.label class: 'form-check-label' do %>
-            <%= tag.check_box class: 'form-check-input' %>
-            <%= tag.text %>
-          <% end %>
-        </div>
-      <% end %>
+      <div class="others_tag">
+        <%= render "public/tags/others_tags", tags: @tag_others, f: f %>
+      </div>
     </div>
+
     <div class="actions row mt-4">
       <div class="field col-auto pb-lg-5 add-font-rocknroll">
         <%= f.submit '　！投稿する！　', class: "text-dark btn btn-outline-success btn-lg" %>
@@ -72,13 +70,8 @@
     </div>
     <% end %>
     <div class="mb-4">
-      <div>
-        <h5 class="">新しいタグを作成する</h5>
-        <%= form_tag({controller:"posts",action:"new"}, method: :get) do %>
-          <%= text_field_tag :tag %>
-          <%= hidden_field_tag :tag_kind, "others_tag" %>
-          <%= submit_tag 'タグを追加', class: 'btn btn-outline-secondary' %>
-        <% end %>
+      <div id="tag-btn">
+        <%= render "public/posts/tag-btn", f1: f1 %>
       </div>
       <div>
         <h6>※作成したタグは「みんなが作ったタグ」に入ります。</h6>

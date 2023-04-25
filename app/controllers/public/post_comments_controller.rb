@@ -10,6 +10,7 @@ class Public::PostCommentsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:post_id])
+    @post_comment = PostComment.new
     PostComment.find(params[:id]).destroy
   end
   

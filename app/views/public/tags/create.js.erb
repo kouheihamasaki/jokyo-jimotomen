@@ -1,0 +1,5 @@
+$('#tag').val('')
+var nestedDiv = $("<div class='form-check tag-input'><label class='form-check-label' for='post_tag_ids_<%= @tag.id%>'><input class='form-check-input' type='checkbox' value='<%= @tag.id %>' name='post[tag_ids][]' id='post_tag_ids_85'><%= @tag.name %></label></div>");
+
+$('.others_tag').append(nestedDiv)
+
