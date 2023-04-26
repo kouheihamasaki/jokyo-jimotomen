@@ -1,5 +1,6 @@
 class Public::CommunityReqsController < ApplicationController
   before_action :authenticate_user!
+  before_action :guest_check
 
   def new
     @community_req = CommunityReq.new

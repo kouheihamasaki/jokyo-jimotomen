@@ -35,12 +35,14 @@
       <div>
         <%= paginate @community_comments %>
       </div>
-      <div class="add-font-rocknroll mt-4 mb-3 border-bottom">
-        <%= form_with model: [@community, @community_comment] do |f| %>
-          <%= f.text_area :comment, :size=>"75" %>
-          <%= f.submit "送信する" , class: 'btn btn-primary ml-1 mb-1' %>
-        <% end %>
-      </div>
+      <% if @user.email != "guest@example.com" %>
+        <div class="add-font-rocknroll mt-4 mb-3 border-bottom">
+          <%= form_with model: [@community, @community_comment] do |f| %>
+            <%= f.text_area :comment, :size=>"75" %>
+            <%= f.submit "送信する" , class: 'btn btn-primary ml-1 mb-1' %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
 
     <%= render 'public/homes/sidebar', user: @user, post_fav_best: @post_fav_best %>

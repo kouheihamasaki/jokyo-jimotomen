@@ -1,5 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :guest_check, except: [:index, :show]
 
   def index
     @post_all = Post.all

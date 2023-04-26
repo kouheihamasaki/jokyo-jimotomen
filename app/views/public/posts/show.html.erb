@@ -88,26 +88,24 @@
     }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap" async defer></script>
-
-    <div id= "favorite-btn">
-     <%= render "public/favorites/favorite-btn", post: @post %>
-    </div>
-
-
-    <div class="">
-      <p class="font-weight-bold border-bottom">コメント件数：<%= @post.post_comment.count %>件</p>
-    </div>
-    <div id="post-comment">
-      <%= render "public/post_comments/comment", post: @post, post_comment: @post_comment %>
-    </div>
-    <div class="add-font-rocknroll text-right">
-      <% if @post.user == current_user %>
-        <%= link_to "この投稿を編集する", edit_post_path(@post), class: "btn btn-success mb-3" %>
-        <%= link_to "この投稿を削除する", post_path(@post), method: :delete, class: "btn btn-danger mb-3" %>
-      <% end %>
-    </div>
-    <div class="row mt-3"></div>
-
+    <% if @user.email != "guest@example.com" %>
+      <div id= "favorite-btn">
+       <%= render "public/favorites/favorite-btn", post: @post %>
+      </div>
+      <div class="">
+        <p class="font-weight-bold border-bottom">コメント件数：<%= @post.post_comment.count %>件</p>
+      </div>
+      <div id="post-comment">
+        <%= render "public/post_comments/comment", post: @post, post_comment: @post_comment %>
+      </div>
+      <div class="add-font-rocknroll text-right">
+        <% if @post.user == current_user %>
+          <%= link_to "この投稿を編集する", edit_post_path(@post), class: "btn btn-success mb-3" %>
+          <%= link_to "この投稿を削除する", post_path(@post), method: :delete, class: "btn btn-danger mb-3" %>
+        <% end %>
+      </div>
+      <div class="row mt-3"></div>
+    <% end %>
   </div>
 
   <%= render 'public/homes/sidebar', user: @user, post_fav_best: @post_fav_best %>

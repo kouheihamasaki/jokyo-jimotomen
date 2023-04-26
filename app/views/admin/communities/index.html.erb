@@ -14,7 +14,10 @@
              <%= community.title %>
             <% end %>
           </h5>
-          <p>対象都道府県：<%= community.prefecture %></p>
+          <p>
+            対象都道府県：<%= community.prefecture %>
+            <small class="text-muted">　コメント数💬<%= community.community_comment.count %></small>
+          </p>
           <p><%= community.introduction %></p>
         </div>
       <% end %>
