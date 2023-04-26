@@ -1,9 +1,9 @@
 class Admin::CommunityReqsController < ApplicationController
-  
+
   def index
     @community_reqs = CommunityReq.page(params[:page]).per(10)
   end
-  
+
   def show
     @community_req = CommunityReq.find(params[:id])
   end
@@ -20,17 +20,17 @@ class Admin::CommunityReqsController < ApplicationController
      render :edit
     end
   end
-  
+
   def destroy
     @community_req = CommunityReq.find(params[:id])
     if @community_req.destroy
-    redirect_to admin_community_reqs_path
+    redirect_to admin_community_reqs_path, notice: "削除しました。"
     else
     render :edit
     end
   end
-  
-  
+
+
   private
 
  private

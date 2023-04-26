@@ -33,9 +33,10 @@ class Admin::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     if @post.destroy
-    redirect_to action: :index
+      flash[:notice] = "投稿を削除しました"
+      redirect_to action: :index
     else
-    render :show
+      render :show
     end
   end
 

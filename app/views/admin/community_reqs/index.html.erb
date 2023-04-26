@@ -1,5 +1,8 @@
 <div class="container">
   <div class="">
+    <div class="text-align-center mb-1 mt-1 bg-info text-white">
+      <%= flash[:notice] %>
+    </div>
     <h3 class="mt-3 midashi">コミュニティリクエスト一覧</h3>
     <% @community_reqs.each do |community_req| %>
       <div class="border-top mt-2">

@@ -1,6 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12 mx-auto">
+      <div class="text-align-center mb-1 mt-1 bg-info text-white">
+        <%= flash[:notice] %>
+      </div>
       <h4 class="my-4"><mark><%= @user.full_name %>さんの会員詳細</mark></h4>
         <div class="d-flex pl-0 font-weight-bold">
           <table class="table table-bordered mt-3">
@@ -51,7 +54,6 @@
         </div>
         <div class="mt-4">
         </div>
-      </div>
     </div>
   </div>
 </div>

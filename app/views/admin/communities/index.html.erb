@@ -2,6 +2,9 @@
 
   <div class="row">
     <div class="col-12">
+      <div class="text-align-center mb-1 mt-1 bg-info text-white">
+        <%= flash[:notice] %>
+      </div>
       <h2 class="midashi col-auto mt-2">コミュニティ一覧</h2>
       <h6 class="mt-3">（全<%= @community_all.count %>件中<%= @communities.count %>件を表示）</h6>
       <% @communities.each do |community| %>

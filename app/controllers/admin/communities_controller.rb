@@ -19,6 +19,7 @@ class Admin::CommunitiesController < ApplicationController
     @community = Community.new(community_params)
     @community.admin_id = current_admin.id
     if @community.save
+      flash[:notice] = "投稿が成功しました"
       redirect_to admin_community_path(@community)
     else
       render :new
@@ -32,6 +33,7 @@ class Admin::CommunitiesController < ApplicationController
   def update
     @community = Community.find(params[:id])
     if @community.update(community_params)
+      flash[:notice] = "投稿を編集しました"
       redirect_to admin_community_path(@community)
     else
       render :edit
@@ -41,6 +43,7 @@ class Admin::CommunitiesController < ApplicationController
   def destroy
     @community = Community.find(params[:id])
     if @community.destroy
+      flash[:notice] = "投稿を削除しました"
       redirect_to admin_communities_path
     else
       render :show
