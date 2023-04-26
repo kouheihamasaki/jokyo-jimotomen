@@ -7,7 +7,7 @@ ja:
         confirmed_at: パスワード確認時刻
         email: メールアドレス
         created_at: 作成日
-        
+        guestuser: ゲストユーザー
         current_password: 現在のパスワード
         current_sign_in_at: 現在のログイン時刻
         current_sign_in_ip: 現在のログインIPアドレス

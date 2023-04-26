@@ -22,3 +22,5 @@
         community_req:
           title: タイトル
           body: 本文
+        user:
+          guestuser: ゲストユーザー
