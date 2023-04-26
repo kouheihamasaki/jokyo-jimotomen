@@ -15,7 +15,7 @@
       </div>
       <div>
         <h6 class="border-bottom">コメント件数：<%= @community.community_comment.count %></h6>
-        <% @community_comments.each do |community_comment| %>
+        <% @community.community_comment.each do |community_comment| %>
         <p class="">
           <%= community_comment.comment %>
         </p>
