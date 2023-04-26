@@ -8,12 +8,12 @@
     <h3 class="mt-2">・みんなの人気記事</h3>
       <% @posts_fav_tops.each do |post| %>
       <div class="row border-top mt-2">
-        <div class="col-3 img-container img">
+        <div class="col-12 col-md-3 img-container img">
           <%= link_to post_path(post.id) do %>
            <%= image_tag post.get_image(300,200) %>
           <% end %>
         </div>
-        <div class="col-9">
+        <div class="col-12 col-md-9">
           <h5 class="">
             <%= link_to post_path(post.id) do %>
              <%= post.shop_name %>
@@ -63,12 +63,12 @@
       <h3 class="mt-4">・新着記事</h3>
       <% @posts_new.each do |post| %>
       <div class="row border-top mt-2">
-        <div class="col-3 img-container img">
+        <div class="col-12 col-md-3 img-container img">
           <%= link_to post_path(post.id) do %>
            <%= image_tag post.get_image(300,200) %>
           <% end %>
         </div>
-        <div class="col-9">
+        <div class="col-12 col-md-9">
           <h5 class="">
             <%= link_to post_path(post.id) do %>
              <%= post.shop_name %>
@@ -117,12 +117,12 @@
 
       <h3 class="mt-4">・ピックアップレビュー</h3>
       <div class="row border-top mt-2">
-        <div class="col-3 img-container img">
+        <div class="col-12 col-md-3 img-container img">
           <%= link_to post_path(@sample_post.id) do %>
            <%= image_tag @sample_post.get_image(300,200) %>
           <% end %>
         </div>
-        <div class="col-9">
+        <div class="col-12 col-md-9">
           <h5 class="">
             <%= link_to post_path(@sample_post.id) do %>
              <%= @sample_post.shop_name %>

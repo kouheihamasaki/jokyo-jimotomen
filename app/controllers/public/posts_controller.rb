@@ -47,6 +47,9 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @tag_pre = Tag.where(tag_kind: 0)
+    @tag_genre = Tag.where(tag_kind: 1)
+    @tag_others = Tag.where(tag_kind: 2)
     unless @post.user_id == current_user.id
      redirect_to posts_path
     end
@@ -68,9 +71,10 @@ class Public::PostsController < ApplicationController
     @tag_others = Tag.where(tag_kind: 2)
     @post.user_id = current_user.id
     if @post.save
-    redirect_to posts_path
+     flash[:notice] = "投稿が成功しました"
+     redirect_to posts_path
     else
-    render :new
+     render :new
     end
   end
 
@@ -78,6 +82,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.user_id = current_user.id
     if @post.update(post_params)
+     flash[:notice] = "投稿を編集しました"
      redirect_to post_path(@post.id)
     else
      render :edit
@@ -87,6 +92,7 @@ class Public::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     if @post.destroy
+    flash[:notice] = "投稿を削除しました"
     redirect_to posts_path
     else
     render :index
