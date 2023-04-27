@@ -80,12 +80,12 @@
                <% @tag_others.all.each do |t| %>
                 <div class='tag-input'><%= check_box :tag_ids, t.name %><%= t.name %></div>
                <% end %>
+             <div class="add-font-rocknroll mt-3">
+               <%= submit_tag '　　検索　　', class: "btn btn-outline-secondary mb-3" %>
+               <%= link_to "検索をリセット", posts_path, class: 'btn btn-outline-secondary mb-3' %>
+             </div>
+            <% end %>
           </div>
-          <div class="add-font-rocknroll mt-3">
-            <%= submit_tag '　　検索　　', class: "btn btn-outline-secondary mb-3" %>
-            <%= link_to "検索をリセット", posts_path, class: 'btn btn-outline-secondary mb-3' %>
-          </div>
-          <% end %>
         </div>
 
 
