@@ -14,6 +14,7 @@ class Admin::PostsController < ApplicationController
         if value == "1"
           tag_posts = Tag.find_by(name: key).posts
           @posts = @posts.empty? ? tag_posts : @posts & tag_posts
+          @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(10)
         end
       end
     end

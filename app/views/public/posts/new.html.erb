@@ -25,8 +25,8 @@
     <h4 class="mt-4">５段階評価（星５個が最大です）</h4>
     <div id="post_raty"></div>
     <script>
-     let elem = document.querySelector('#post_raty');
-     let opt = {
+     var elem = document.querySelector('#post_raty');
+     var opt = {
       starOn: "<%= asset_path('star-on.png') %>",
       starOff: "<%= asset_path('star-off.png') %>",
       scoreName: 'post[star]',
