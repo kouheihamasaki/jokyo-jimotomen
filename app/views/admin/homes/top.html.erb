@@ -8,7 +8,7 @@
     <h3 class="mt-2">・記事、コミュニティを検索</h3>
     <div class="search_form mt-2 col-auto">
       <%= form_with url: admin_search_path, local: true, method: :get do |f| %>
-        <%= f.text_field :word, :size=>"50", :placeholder => "入力して検索する", class: "mb-1" %>
+        <%= f.text_field :word, :placeholder => "入力して検索する", class: "mb-1 w-50" %>
         <%= f.select :range, options_for_select([['投稿記事'], ['コミュニティ']]) %>
         <%= f.submit "検索", class: "btn btn-sm btn-primary ml-2" %>
       <% end %>
