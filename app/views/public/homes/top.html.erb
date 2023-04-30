@@ -11,7 +11,7 @@
       <h3 class="mt-2">・みんなの人気記事</h3>
         <% @posts_fav_tops.each do |post| %>
         <div class="row border-top mt-2">
-          <div class="col-12 col-md-5 col-lg-4 col-xl-3 img-container img">
+          <div class="col-12 col-md-5 col-lg-4 col-xl-3 img-container img img-responsive">
             <%= link_to post_path(post.id) do %>
              <%= image_tag post.get_image(300,200) %>
             <% end %>
