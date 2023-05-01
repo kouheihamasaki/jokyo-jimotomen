@@ -33,8 +33,6 @@ ex) 博多豚骨ラーメン・愛知味噌煮込みうどん・山形冷たい�
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
+- API：Google Maps API
 - IDE：Cloud9
 
-## 使用素材
--
--
