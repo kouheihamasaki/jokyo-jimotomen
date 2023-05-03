@@ -12,7 +12,6 @@ class Admin::SearchesController < ApplicationController
       @result_word = params[:word]
       render "admin/searches/search_result"
     end
-
   end
 
 end

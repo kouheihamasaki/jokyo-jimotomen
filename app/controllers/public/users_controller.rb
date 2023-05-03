@@ -28,12 +28,11 @@ class Public::UsersController < ApplicationController
   def withdraw
     @user = current_user
     if @user.update(is_deleted:true)
-    sign_out_and_redirect(current_user)
+      sign_out_and_redirect(current_user)
     else
-     render "unsubscribe"
+      render "unsubscribe"
     end
   end
-
 
 
   private

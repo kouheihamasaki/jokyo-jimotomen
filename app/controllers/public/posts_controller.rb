@@ -10,6 +10,7 @@ class Public::PostsController < ApplicationController
     @tag_genre = Tag.where(tag_kind: 1)
     @tag_others = Tag.where(tag_kind: 2)
 
+    # タグ検索機能
     if params[:tag_ids]
       @posts = []
       params[:tag_ids].each do |key, value|
@@ -53,7 +54,7 @@ class Public::PostsController < ApplicationController
     @tag_genre = Tag.where(tag_kind: 1)
     @tag_others = Tag.where(tag_kind: 2)
     unless @post.user_id == current_user.id
-     redirect_to posts_path
+      redirect_to posts_path
     end
   end
 
@@ -73,10 +74,10 @@ class Public::PostsController < ApplicationController
     @tag_others = Tag.where(tag_kind: 2)
     @post.user_id = current_user.id
     if @post.save
-     flash[:notice] = "投稿が成功しました"
-     redirect_to posts_path
+      flash[:notice] = "投稿が成功しました"
+      redirect_to posts_path
     else
-     render :new
+      render :new
     end
   end
 
@@ -84,20 +85,20 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.user_id = current_user.id
     if @post.update(post_params)
-     flash[:notice] = "投稿を編集しました"
-     redirect_to post_path(@post.id)
+      flash[:notice] = "投稿を編集しました"
+      redirect_to post_path(@post.id)
     else
-     render :edit
+      render :edit
     end
   end
 
   def destroy
     @post = Post.find(params[:id])
     if @post.destroy
-    flash[:notice] = "投稿を削除しました"
-    redirect_to posts_path
+      flash[:notice] = "投稿を削除しました"
+      redirect_to posts_path
     else
-    render :index
+      render :index
     end
   end
 

@@ -21,4 +21,5 @@ private
     params.require(:post_comment).permit(:comment)
   end
   
+  
 end
