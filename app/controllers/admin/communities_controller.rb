@@ -51,11 +51,11 @@ class Admin::CommunitiesController < ApplicationController
   end
 
 
-private
- def community_params
-   params.require(:community).permit(:prefecture, :title, :introduction)
- end
+  private
 
+  def community_params
+    params.require(:community).permit(:prefecture, :title, :introduction)
+  end
 
 
 end

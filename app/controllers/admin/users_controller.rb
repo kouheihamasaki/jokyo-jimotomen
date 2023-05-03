@@ -23,8 +23,6 @@ class Admin::UsersController < ApplicationController
   end
 
 
-
-
  private
 
   def user_params
@@ -33,5 +31,6 @@ class Admin::UsersController < ApplicationController
                                      :introduction,:prefecture,:screen_name,
                                      :fav_noodle,:email,:is_deleted)
   end
+
 
 end

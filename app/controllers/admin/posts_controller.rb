@@ -7,7 +7,8 @@ class Admin::PostsController < ApplicationController
     @tag_pre = Tag.where(tag_kind: 0)
     @tag_genre = Tag.where(tag_kind: 1)
     @tag_others = Tag.where(tag_kind: 2)
-
+    
+    # タグ検索機能
     if params[:tag_ids]
       @posts = []
       params[:tag_ids].each do |key, value|

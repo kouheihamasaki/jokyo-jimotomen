@@ -5,5 +5,4 @@ class Admin::PostCommentsController < ApplicationController
     redirect_to admin_post_path(params[:post_id])
   end
 
-
 end
