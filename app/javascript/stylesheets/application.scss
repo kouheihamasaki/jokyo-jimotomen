@@ -28,12 +28,13 @@ p {
 }
 
 
-
+// ヘッダーのロゴ
 .logo-size{
   width: 320px;
   height: 60px;
 }
 
+// 投稿画像
 .img-container img {
   width: 200px;
   height: 170px;
@@ -42,6 +43,7 @@ p {
   display: block;
 }
 
+// プロフィール画像
 .img-container-user img {
   width: 100px;
   height: 100px;
@@ -84,7 +86,7 @@ p {
   color: #0000FF;
 }
 
-
+// タグのデザイン
 .tag-dez {
   padding: 1px;
   border-left:solid 2px #0000FF;
@@ -153,7 +155,7 @@ p {
   border-radius: 15px;
 }
 
-
+// ヘッダーのハンバーガメニュー
 .navbar-light .navbar-toggler{
   border-color: #DDDDDD;
 }

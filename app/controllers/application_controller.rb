@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-
+  # ゲストログインかどうかを判断する
   def guest_check
     @user = current_user
     if @user.email == "guest@example.com"
@@ -17,7 +17,6 @@ class ApplicationController < ActionController::Base
 
     devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
   end
-
 
 
 end
