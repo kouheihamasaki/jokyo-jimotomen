@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  
   belongs_to :user
   has_many   :post_tags, dependent: :destroy
   has_many   :tags, through: :post_tags, dependent: :destroy
@@ -18,7 +19,7 @@ class Post < ApplicationRecord
   geocoded_by :adress
   after_validation :geocode
 
-
+  # 画像データがなければデフォルト画像を出力する
   def get_image(width,height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image_jokyo-jimotomen.jpg')
@@ -27,10 +28,12 @@ class Post < ApplicationRecord
       image.variant(resize_to_limit: [width, height]).processed
   end
 
+  # いいねが投稿に存在するかのメソッド
   def favorited_by?(user)
     favorite.exists?(user_id: user.id)
   end
 
+  # ワード検索機能
   def self.looks(word)
     @post = Post.where("title LIKE?","%#{word}%")
   end

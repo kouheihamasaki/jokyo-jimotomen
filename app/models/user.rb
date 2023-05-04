@@ -25,6 +25,7 @@ class User < ApplicationRecord
     self.last_name + " " + self.first_name
   end
 
+  # ゲストログイン機能
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
@@ -38,7 +39,7 @@ class User < ApplicationRecord
     end
   end
 
-
+  # 画像データがなければデフォルト画像を出力する
   def get_profile_image(width, height)
   unless profile_image.attached?
     file_path = Rails.root.join('app/assets/images/no_image_jokyo-jimotomen.png')
@@ -47,10 +48,10 @@ class User < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
 end
 
