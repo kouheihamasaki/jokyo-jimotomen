@@ -48,64 +48,62 @@
   <div class="row">
     <div class="col-12">
       <% @posts.each do |post| %>
-      <div class="row border-top mt-2">
-        <div class="col-12 col-md-5 col-lg-4 col-xl-3 img-container img">
-          <%= link_to post_path(post.id) do %>
-           <%= image_tag post.get_image(300,200) %>
-          <% end %>
-        </div>
-        <div class="col-12 col-md-7 col-lg-8 col-xl-9">
-          <h5 class="">
+        <div class="row border-top mt-2">
+          <div class="col-12 col-md-5 col-lg-4 col-xl-3 img-container img">
             <%= link_to post_path(post.id) do %>
-             <%= post.shop_name %>
+             <%= image_tag post.get_image(300,200) %>
             <% end %>
-          </h5>
-          <p class="font-weight-bold lead"><%= post.title %></p>
-          <div class="row ml-2">
-            <div class="col-5">
-              <div class="row">
-                <div id="index-stars<%= post.id%>"></div>
-                <h5 class="font-red">　星<%= post.star %>ツ！</h5>
+          </div>
+          <div class="col-12 col-md-7 col-lg-8 col-xl-9">
+            <h5 class="">
+              <%= link_to post_path(post.id) do %>
+               <%= post.shop_name %>
+              <% end %>
+            </h5>
+            <p class="font-weight-bold lead"><%= post.title %></p>
+            <div class="row ml-2">
+              <div class="col-5">
+                <div class="row">
+                  <div id="index-stars<%= post.id%>"></div>
+                  <h5 class="font-red">　星<%= post.star %>ツ！</h5>
+                </div>
+              </div>
+              <div class="col-5 offset-md-2">
+                <h6 class=""><small class="text-muted text-right">
+                  <%= image_tag post.user.get_profile_image(40,40) %>
+                  <%= post.user.screen_name %>さんの投稿
+                </small></h6>
               </div>
             </div>
-            <div class="col-5 offset-md-2">
-              <h6 class=""><small class="text-muted text-right">
-                <%= image_tag post.user.get_profile_image(40,40) %>
-                <%= post.user.screen_name %>さんの投稿
-              </small></h6>
+            <!--Raty-->
+            <script>
+              var showRateElement<%= post.id%> = document.querySelector('#index-stars<%= post.id%>');
+              var showOpt<%= post.id%> = {
+              starOn: "<%= asset_path('star-on.png') %>",
+              starOff: "<%= asset_path('star-off.png') %>",
+              scoreName: 'post[star]',
+              score: "<%= post.star %>",
+              readOnly: true
+              };
+              window.raty(showRateElement<%= post.id%>, showOpt<%= post.id%>);
+            </script>
+            <div class="add-font-rocknroll">
+              <h6><%= post.body.truncate(39) %></h6>
+              <div class="tag-input">
+                <h6 class="">
+                  <% post.tags.each do |tag| %>
+                    <span class="tag-dez"><%= tag.name %></span>
+                  <% end %>
+                  <small class="text-muted text-right">💛<%= post.favorite.count %></small>
+                </h6>
+              </div>
             </div>
-          </div>
-        <script>
-          var showRateElement<%= post.id%> = document.querySelector('#index-stars<%= post.id%>');
-          var showOpt<%= post.id%> = {
-          starOn: "<%= asset_path('star-on.png') %>",
-          starOff: "<%= asset_path('star-off.png') %>",
-          scoreName: 'post[star]',
-          score: "<%= post.star %>",
-          readOnly: true
-          };
-          window.raty(showRateElement<%= post.id%>, showOpt<%= post.id%>);
-        </script>
-          <div class="add-font-rocknroll">
-            <h6><%= post.body.truncate(39) %></h6>
-            <div class="tag-input">
-              <h6 class="">
-                <% post.tags.each do |tag| %>
-                  <span class="tag-dez"><%= tag.name %></span>
-                <% end %>
-                <small class="text-muted text-right">💛<%= post.favorite.count %></small>
-              </h6>
-            </div>
-
           </div>
         </div>
-      </div>
       <% end %>
       <div>
         <%= paginate @posts %>
       </div>
     </div>
   </div>
-
-
 </div>

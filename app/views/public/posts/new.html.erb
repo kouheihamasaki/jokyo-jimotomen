@@ -13,61 +13,61 @@
   <div class="row">
     <% f1 = nil%>
     <%= form_with model: @post do |f| %>
-    <% fi = f%>
-    <h4 class="mt-3">投稿タイトル</h4>
+      <% fi = f%>
+      <h4 class="mt-3">投稿タイトル</h4>
       <%= f.text_field :title, :size=>"72", autofocus: true %>
-    <h4 class="mt-3">ショップ名</h4>
+      <h4 class="mt-3">ショップ名</h4>
       <%= f.text_field :shop_name, :size=>"72" %>
-    <h4 class="mt-3">投稿本文</h4>
+      <h4 class="mt-3">投稿本文</h4>
       <%= f.text_area :body,:size=>"74x10", :placeholder => "博多豚骨ラーメン"%>
-    <h4 class="mt-3">画像</h4>
+      <h4 class="mt-3">画像</h4>
       <%= f.file_field :image, accept: "image/*" %>
-    <h4 class="mt-4">５段階評価（星５個が最大です）</h4>
-    <div id="post_raty"></div>
-    <script>
-     var elem = document.querySelector('#post_raty');
-     var opt = {
-      starOn: "<%= asset_path('star-on.png') %>",
-      starOff: "<%= asset_path('star-off.png') %>",
-      scoreName: 'post[star]',
-      half: false,
-     };
-     raty(elem, opt);
-    </script>
-    <h4 class="mt-4">お店の住所</h4>
+      <h4 class="mt-4">５段階評価（星５個が最大です）</h4>
+      <div id="post_raty"></div>
+      <!--Raty-->
+      <script>
+       var elem = document.querySelector('#post_raty');
+       var opt = {
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        scoreName: 'post[star]',
+        half: false,
+       };
+       raty(elem, opt);
+      </script>
+      <h4 class="mt-4">お店の住所</h4>
       <%= f.text_field :adress, :size=>"72" ,placeholder: "お店の住所を正しく入力してください（郵便番号はいりません）" %>
-    <!--タグ部分-->
-    <h4 class="mt-4">タグの選択<small>　※複数選択可能です</small></h4>
-    <div class='form-group'>
-      <h5 class="mt-2">・都道府県タグ</h5>
-      <%= f.collection_check_boxes(:tag_ids, @tag_pre.all, :id, :name) do |tag| %>
-        <div class='form-check tag-input'>
-          <%= tag.label class: 'form-check-label' do %>
-            <%= tag.check_box class: 'form-check-input' %>
-            <%= tag.text %>
-          <% end %>
+      <!--タグ部分-->
+      <h4 class="mt-4">タグの選択<small>　※複数選択可能です</small></h4>
+      <div class='form-group'>
+        <h5 class="mt-2">・都道府県タグ</h5>
+        <%= f.collection_check_boxes(:tag_ids, @tag_pre.all, :id, :name) do |tag| %>
+          <div class='form-check tag-input'>
+            <%= tag.label class: 'form-check-label' do %>
+              <%= tag.check_box class: 'form-check-input' %>
+              <%= tag.text %>
+            <% end %>
+          </div>
+        <% end %>
+        <h5 class="mt-2">・ジャンルタグ</h5>
+        <%= f.collection_check_boxes(:tag_ids, @tag_genre.all, :id, :name) do |tag| %>
+          <div class='form-check tag-input'>
+            <%= tag.label class: 'form-check-label' do %>
+              <%= tag.check_box class: 'form-check-input' %>
+              <%= tag.text %>
+            <% end %>
+          </div>
+        <% end %>
+        <h5 class="mt-2">・みんなが作ったタグ</h5>
+        <div class="others_tag">
+          <%= render "public/tags/others_tags", tags: @tag_others, f: f %>
         </div>
-      <% end %>
-      <h5 class="mt-2">・ジャンルタグ</h5>
-      <%= f.collection_check_boxes(:tag_ids, @tag_genre.all, :id, :name) do |tag| %>
-        <div class='form-check tag-input'>
-          <%= tag.label class: 'form-check-label' do %>
-            <%= tag.check_box class: 'form-check-input' %>
-            <%= tag.text %>
-          <% end %>
+      </div>
+      <div class="actions row mt-4">
+        <div class="field col-auto pb-lg-5 add-font-rocknroll">
+          <%= f.submit '　！投稿する！　', class: "text-dark btn btn-outline-success btn-lg" %>
         </div>
-      <% end %>
-      <h5 class="mt-2">・みんなが作ったタグ</h5>
-      <div class="others_tag">
-        <%= render "public/tags/others_tags", tags: @tag_others, f: f %>
       </div>
-    </div>
-
-    <div class="actions row mt-4">
-      <div class="field col-auto pb-lg-5 add-font-rocknroll">
-        <%= f.submit '　！投稿する！　', class: "text-dark btn btn-outline-success btn-lg" %>
-      </div>
-    </div>
     <% end %>
     <div class="mb-4">
       <div id="tag-btn">
