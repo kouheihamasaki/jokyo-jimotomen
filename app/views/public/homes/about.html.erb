@@ -1,5 +1,4 @@
 <div class="container">
-
   <div class="row ml-5 mt-3 mb-3">
     <div class="col-lg-6 col-12">
       <div class="">
@@ -23,8 +22,6 @@
       </div>
     </div>
   </div>
-
-
   <h3>　このサイトでできること</h3>
   <div class="row ml-5 mt-3">
     <div class="col-lg-4 col-12 mb-5">
@@ -41,7 +38,6 @@
         <%= link_to "お店をレビューする＞＞＞", new_post_path %>
       </div>
     </div>
-
     <div class="col-lg-4 col-12 mb-5">
       <div class="" style="max-width: 600px;">
         <img class="card-img" src="<%= asset_path('about1.jpg') %>" alt="">
@@ -52,12 +48,10 @@
          東京にはたくさんお店がありますが、地元の本来の味を出している店舗は少ないです<br>
          同じ地元の方のレビューなら、近い味覚で参考になるレビューがあるはず<br>
          他の地域の気になった麺を検索したい際にもぜひ</p>
-        <div class="add-font-rocknroll">
-         <%= link_to "投稿一覧を見る＞＞＞", posts_path %>
-        </div>
+      <div class="add-font-rocknroll">
+        <%= link_to "投稿一覧を見る＞＞＞", posts_path %>
+      </div>
     </div>
-
-
     <div class="col-lg-4 col-12 mb-5">
       <div class="" style="max-width: 600px;">
         <img class="card-img" src="<%= asset_path('about4.jpg') %>" alt="">
@@ -74,17 +68,13 @@
       </div>
     </div>
   </div>
-
   <div class="row ml-8 mt-5">
     <h4>　　会員登録　ログインはこちらから！</h4>
-
-
-  <div class="field col-md-10 offset-md-1 mt-3 add-font-rocknroll">
-    <%= link_to 'ログインページへ', new_user_session_path, class: "btn btn-primary btn-sm btn-block mb-3" %>
+    <div class="field col-md-10 offset-md-1 mt-3 add-font-rocknroll">
+      <%= link_to 'ログインページへ', new_user_session_path, class: "btn btn-primary btn-sm btn-block mb-3" %>
+    </div>
+    <div class="field col-md-10 offset-md-1 mb-3 add-font-rocknroll">
+      <%= link_to '新規会員登録へ', new_user_registration_path, class: "btn btn-success btn-sm btn-block mb-5" %>
+    </div>
   </div>
-
-  <div class="field col-md-10 offset-md-1 mb-3 add-font-rocknroll">
-    <%= link_to '新規会員登録へ', new_user_registration_path, class: "btn btn-success btn-sm btn-block mb-5" %>
-  </div>
-</div>
 </div>

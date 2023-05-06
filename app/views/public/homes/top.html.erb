@@ -9,181 +9,181 @@
       </div>
       <h2 class="midashi">東京でも地元麺を食べよう！</h2>
       <h3 class="mt-2">・みんなの人気記事</h3>
-        <% @posts_fav_tops.each do |post| %>
-        <div class="row border-top mt-2">
-          <div class="col-12 col-md-5 col-lg-4 col-xl-3 img-container img img-responsive">
+      <% @posts_fav_tops.each do |post| %>
+      <div class="row border-top mt-2">
+        <div class="col-12 col-md-5 col-lg-4 col-xl-3 img-container img img-responsive">
+          <%= link_to post_path(post.id) do %>
+           <%= image_tag post.get_image(300,200) %>
+          <% end %>
+        </div>
+        <div class="col-12 col-md-7 col-lg-8 col-xl-9">
+          <h5 class="">
             <%= link_to post_path(post.id) do %>
-             <%= image_tag post.get_image(300,200) %>
+             <%= post.shop_name %>
             <% end %>
-          </div>
-          <div class="col-12 col-md-7 col-lg-8 col-xl-9">
-            <h5 class="">
-              <%= link_to post_path(post.id) do %>
-               <%= post.shop_name %>
-              <% end %>
-            </h5>
-            <p class="font-weight-bold lead"><%= post.title %></p>
-            <div class="row ml-2">
-              <div class="col-5">
-                <div class="row">
-                  <div id="top-top-stars<%= post.id%>"></div>
-                  <h5 class="font-red">　星<%= post.star %>ツ！</h5>
-                </div>
-              </div>
-              <div class="col-5 offset-md-2">
-                <h6 class=""><small class="text-muted text-right">
-                  <%= image_tag post.user.get_profile_image(35,35) %>
-                  <%= post.user.screen_name %>さんの投稿
-                </small></h6>
+          </h5>
+          <p class="font-weight-bold lead"><%= post.title %></p>
+          <div class="row ml-2">
+            <div class="col-5">
+              <div class="row">
+                <div id="top-top-stars<%= post.id%>"></div>
+                <h5 class="font-red">　星<%= post.star %>ツ！</h5>
               </div>
             </div>
-          <script>
-            var topRateElement = document.querySelector('#top-top-stars<%= post.id%>');
-            var topOpt = {
-            starOn: "<%= asset_path('star-on.png') %>",
-            starOff: "<%= asset_path('star-off.png') %>",
-            scoreName: 'post[star]',
-            score: "<%= post.star %>",
-            readOnly: true
-            };
-            window.raty(topRateElement, topOpt);
-          </script>
-            <div class="add-font-rocknroll">
-              <h6><%= post.body.truncate(36, omission: "...") %></h6>
-              <div class="tag-input">
-                <h6 class="">
-                  <% post.tags.each do |tag| %>
-                    <span class="tag-dez"><%= tag.name %></span>
-                  <% end %>
-                  <small class="text-muted text-right">💛<%= post.favorite.count %></small>
-                </h6>
-              </div>
+            <div class="col-5 offset-md-2">
+              <h6 class=""><small class="text-muted text-right">
+                <%= image_tag post.user.get_profile_image(35,35) %>
+                <%= post.user.screen_name %>さんの投稿
+              </small></h6>
             </div>
           </div>
-        </div>
-        <% end %>
-
-        <h3 class="mt-4">・新着記事</h3>
-        <% @posts_new.each do |post| %>
-        <div class="row border-top mt-2">
-          <div class="col-12 col-md-5 col-lg-4 col-xl-3 img-container img">
-            <%= link_to post_path(post.id) do %>
-             <%= image_tag post.get_image(300,200) %>
-            <% end %>
-          </div>
-          <div class="col-12 col-md-7 col-lg-8 col-xl-9">
-            <h5 class="">
-              <%= link_to post_path(post.id) do %>
-               <%= post.shop_name %>
-              <% end %>
-            </h5>
-            <p class="font-weight-bold lead"><%= post.title %></p>
-            <div class="row ml-2">
-              <div class="col-5">
-                <div class="row">
-                  <div id="top-new-stars<%= post.id%>"></div>
-                  <h5 class="font-red">　星<%= post.star %>ツ！</h5>
-                </div>
-              </div>
-              <div class="col-5 offset-md-2">
-                <h6 class=""><small class="text-muted text-right">
-                  <%= image_tag post.user.get_profile_image(35,35) %>
-                  <%= post.user.screen_name %>さんの投稿
-                </small></h6>
-              </div>
+        <!--Raty-->
+        <script>
+          var topRateElement = document.querySelector('#top-top-stars<%= post.id%>');
+          var topOpt = {
+          starOn: "<%= asset_path('star-on.png') %>",
+          starOff: "<%= asset_path('star-off.png') %>",
+          scoreName: 'post[star]',
+          score: "<%= post.star %>",
+          readOnly: true
+          };
+          window.raty(topRateElement, topOpt);
+        </script>
+          <div class="add-font-rocknroll">
+            <h6><%= post.body.truncate(36, omission: "...") %></h6>
+            <div class="tag-input">
+              <h6 class="">
+                <% post.tags.each do |tag| %>
+                  <span class="tag-dez"><%= tag.name %></span>
+                <% end %>
+                <small class="text-muted text-right">💛<%= post.favorite.count %></small>
+              </h6>
             </div>
-          <script>
-            var newRateElement = document.querySelector('#top-new-stars<%= post.id%>');
-            var newOpt = {
-            starOn: "<%= asset_path('star-on.png') %>",
-            starOff: "<%= asset_path('star-off.png') %>",
-            scoreName: 'post[star]',
-            score: "<%= post.star %>",
-            readOnly: true
-            };
-            window.raty(newRateElement, newOpt);
-          </script>
-            <div class="add-font-rocknroll">
-              <h6><%= post.body.truncate(36, omission: "...") %></h6>
-              <div class="tag-input">
-                <h6 class="">
-                  <% post.tags.each do |tag| %>
-                    <span class="tag-dez"><%= tag.name %></span>
-                  <% end %>
-                  <small class="text-muted text-right">💛<%= post.favorite.count %></small>
-                </h6>
-              </div>
-            </div>
-          </div>
-        </div>
-        <% end %>
-
-        <h3 class="mt-4">・ピックアップレビュー</h3>
-        <div class="row border-top mt-2">
-          <div class="col-12 col-md-5 col-lg-4 col-xl-3 img-container img">
-            <%= link_to post_path(@sample_post.id) do %>
-             <%= image_tag @sample_post.get_image(300,200) %>
-            <% end %>
-          </div>
-          <div class="col-12 col-md-7 col-lg-8 col-xl-9">
-            <h5 class="">
-              <%= link_to post_path(@sample_post.id) do %>
-               <%= @sample_post.shop_name %>
-              <% end %>
-            </h5>
-            <p class="font-weight-bold lead"><%= @sample_post.title %></p>
-            <div class="row ml-2">
-              <div class="col-5">
-                <div class="row">
-                  <div id="top-pick-stars<%= @sample_post.id%>"></div>
-                  <h5 class="font-red">　星<%= @sample_post.star %>ツ！</h5>
-                </div>
-              </div>
-              <div class="col-5 offset-md-2">
-                <h6 class=""><small class="text-muted text-right">
-                  <%= image_tag @sample_post.user.get_profile_image(35,35) %>
-                  <%= @sample_post.user.screen_name %>さんの投稿
-                </small></h6>
-              </div>
-            </div>
-          <script>
-            var pickRateElement = document.querySelector('#top-pick-stars<%= @sample_post.id%>');
-            var pickOpt = {
-            starOn: "<%= asset_path('star-on.png') %>",
-            starOff: "<%= asset_path('star-off.png') %>",
-            scoreName: 'post[star]',
-            score: "<%= @sample_post.star %>",
-            readOnly: true
-            };
-            window.raty(pickRateElement, pickOpt);
-          </script>
-            <div class="add-font-rocknroll">
-              <h6><%= @sample_post.body.truncate(36, omission: "...") %></h6>
-              <div class="tag-input">
-                <h6 class="">
-                  <% @sample_post.tags.each do |tag| %>
-                    <span class="tag-dez"><%= tag.name %></span>
-                  <% end %>
-                  <small class="text-muted text-right">💛<%= @sample_post.favorite.count %></small>
-                </h6>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="row ml-8 mt-5">
-          <h4>　みんなの投稿をもっと見る！！</h4>
-          <div class="field col-md-10 offset-md-1 mt-1 mb-3 add-font-rocknroll">
-            <%= link_to 'みんなの投稿一覧へ', posts_path, class: "btn btn-warning btn-sm btn-block mb-3" %>
-          </div>
-          <h4>　地元麺のお店を投稿する！！</h4>
-          <div class="field col-md-10 offset-md-1 mb-3 add-font-rocknroll">
-           <%= link_to '新規投稿フォームへ', new_post_path, class: "btn btn-warning btn-sm btn-block mb-5" %>
           </div>
         </div>
       </div>
+      <% end %>
 
-      <%= render 'sidebar', user: @user, post_fav_best: @post_fav_best %>
+      <h3 class="mt-4">・新着記事</h3>
+      <% @posts_new.each do |post| %>
+      <div class="row border-top mt-2">
+        <div class="col-12 col-md-5 col-lg-4 col-xl-3 img-container img">
+          <%= link_to post_path(post.id) do %>
+           <%= image_tag post.get_image(300,200) %>
+          <% end %>
+        </div>
+        <div class="col-12 col-md-7 col-lg-8 col-xl-9">
+          <h5 class="">
+            <%= link_to post_path(post.id) do %>
+             <%= post.shop_name %>
+            <% end %>
+          </h5>
+          <p class="font-weight-bold lead"><%= post.title %></p>
+          <div class="row ml-2">
+            <div class="col-5">
+              <div class="row">
+                <div id="top-new-stars<%= post.id%>"></div>
+                <h5 class="font-red">　星<%= post.star %>ツ！</h5>
+              </div>
+            </div>
+            <div class="col-5 offset-md-2">
+              <h6 class=""><small class="text-muted text-right">
+                <%= image_tag post.user.get_profile_image(35,35) %>
+                <%= post.user.screen_name %>さんの投稿
+              </small></h6>
+            </div>
+          </div>
+        <!--Raty-->
+        <script>
+          var newRateElement = document.querySelector('#top-new-stars<%= post.id%>');
+          var newOpt = {
+          starOn: "<%= asset_path('star-on.png') %>",
+          starOff: "<%= asset_path('star-off.png') %>",
+          scoreName: 'post[star]',
+          score: "<%= post.star %>",
+          readOnly: true
+          };
+          window.raty(newRateElement, newOpt);
+        </script>
+          <div class="add-font-rocknroll">
+            <h6><%= post.body.truncate(36, omission: "...") %></h6>
+            <div class="tag-input">
+              <h6 class="">
+                <% post.tags.each do |tag| %>
+                  <span class="tag-dez"><%= tag.name %></span>
+                <% end %>
+                <small class="text-muted text-right">💛<%= post.favorite.count %></small>
+              </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
 
+      <h3 class="mt-4">・ピックアップレビュー</h3>
+      <div class="row border-top mt-2">
+        <div class="col-12 col-md-5 col-lg-4 col-xl-3 img-container img">
+          <%= link_to post_path(@sample_post.id) do %>
+           <%= image_tag @sample_post.get_image(300,200) %>
+          <% end %>
+        </div>
+        <div class="col-12 col-md-7 col-lg-8 col-xl-9">
+          <h5 class="">
+            <%= link_to post_path(@sample_post.id) do %>
+             <%= @sample_post.shop_name %>
+            <% end %>
+          </h5>
+          <p class="font-weight-bold lead"><%= @sample_post.title %></p>
+          <div class="row ml-2">
+            <div class="col-5">
+              <div class="row">
+                <div id="top-pick-stars<%= @sample_post.id%>"></div>
+                <h5 class="font-red">　星<%= @sample_post.star %>ツ！</h5>
+              </div>
+            </div>
+            <div class="col-5 offset-md-2">
+              <h6 class=""><small class="text-muted text-right">
+                <%= image_tag @sample_post.user.get_profile_image(35,35) %>
+                <%= @sample_post.user.screen_name %>さんの投稿
+              </small></h6>
+            </div>
+          </div>
+        <!--Raty-->
+        <script>
+          var pickRateElement = document.querySelector('#top-pick-stars<%= @sample_post.id%>');
+          var pickOpt = {
+          starOn: "<%= asset_path('star-on.png') %>",
+          starOff: "<%= asset_path('star-off.png') %>",
+          scoreName: 'post[star]',
+          score: "<%= @sample_post.star %>",
+          readOnly: true
+          };
+          window.raty(pickRateElement, pickOpt);
+        </script>
+          <div class="add-font-rocknroll">
+            <h6><%= @sample_post.body.truncate(36, omission: "...") %></h6>
+            <div class="tag-input">
+              <h6 class="">
+                <% @sample_post.tags.each do |tag| %>
+                  <span class="tag-dez"><%= tag.name %></span>
+                <% end %>
+                <small class="text-muted text-right">💛<%= @sample_post.favorite.count %></small>
+              </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row ml-8 mt-5">
+        <h4>　みんなの投稿をもっと見る！！</h4>
+        <div class="field col-md-10 offset-md-1 mt-1 mb-3 add-font-rocknroll">
+          <%= link_to 'みんなの投稿一覧へ', posts_path, class: "btn btn-warning btn-sm btn-block mb-3" %>
+        </div>
+        <h4>　地元麺のお店を投稿する！！</h4>
+        <div class="field col-md-10 offset-md-1 mb-3 add-font-rocknroll">
+         <%= link_to '新規投稿フォームへ', new_post_path, class: "btn btn-warning btn-sm btn-block mb-5" %>
+        </div>
+      </div>
+    </div>
+    <%= render 'sidebar', user: @user, post_fav_best: @post_fav_best %>
   </div>
 </div>

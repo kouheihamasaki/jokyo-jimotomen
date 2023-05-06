@@ -1,6 +1,5 @@
 <div class="container add-font-rocknroll">
   <div class="row">
-
     <div class="col-lg-9 col-12">
       <h2 class="midashi col-auto mt-2">コミュニティ一覧</h2>
       <h6 class="mt-3">（全<%= @community_all.count %>件中<%= @communities.count %>件を表示）</h6>
@@ -22,13 +21,9 @@
         <%= paginate @communities %>
       </div>
       <div class="mt-3 mb-5"></div>
-        <h5>こんなコミュニティがあったらな、、という要望はこちら</h5>
-        <%= link_to "コミュニティリクエスト", new_community_reqs_path, class: 'btn btn-outline-secondary ml-3 mb-3' %>
+      <h5>こんなコミュニティがあったらな、、という要望はこちら</h5>
+      <%= link_to "コミュニティリクエスト", new_community_reqs_path, class: 'btn btn-outline-secondary ml-3 mb-3' %>
     </div>
-
-
     <%= render 'public/homes/sidebar', user: @user, post_fav_best: @post_fav_best %>
-
-
   </div>
 </div>
