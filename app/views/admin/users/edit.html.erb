@@ -3,49 +3,40 @@
     <div class="col-12 col-md-8 mx-auto">
       <h4 class="my-4"><mark class="bg-light"><%= @user.full_name %>さんの会員情報編集</mark></h4>
       <%= form_with model: @user, url: admin_user_path do |f| %>
-
       <div class="my-3">
         <label class="font-weight-bold justify-content-start" style="width:20%">会員ID</label>
         <%= @user.id %>
       </div>
-
       <div class="form-inline my-3">
         <label class="font-weight-bold justify-content-start" style="width:20%">氏名</label>
         <%= f.text_field :last_name, autofocus: true, required: true, autocomplete: "last_name", class: "form-control" %>
         <%= f.text_field :first_name, required: true, autocomplete: "first_name", class: "form-control ml-md-5" %>
       </div>
-
       <div class="form-inline my-3">
         <label class="font-weight-bold justify-content-start" style="width:20%">フリガナ</label>
           <%= f.text_field :last_name_kana, required: true, autocomplete: "last_name_kana", class: "form-control" %>
           <%= f.text_field :first_name_kana, required: true, autocomplete: "first_name_kana", class: "form-control ml-md-5" %>
       </div>
-
       <div class="form-inline my-3">
         <label class="font-weight-bold justify-content-start" style="width:20%">ユーザー名</label>
         <%= f.text_field :screen_name, required: true, autocomplete: "screen_name", class: "form-control w-75" %>
       </div>
-
       <div class="form-inline my-3">
         <label class="font-weight-bold justify-content-start" style="width:20%">自己紹介文</label>
         <%= f.text_field :introduction, required: true, autocomplete: "introduction", class: "form-control w-75" %>
       </div>
-
       <div class="form-inline my-3">
         <label class="font-weight-bold justify-content-start" style="width:20%">好きな都道府県</label>
         <%= f.text_field :prefecture, required: true, autocomplete: "prefecture", class: "form-control w-75" %>
       </div>
-
       <div class="form-inline my-3">
         <label class="font-weight-bold justify-content-start" style="width:20%">押し麺類</label>
         <%= f.text_field :fav_noodle, required: true, autocomplete: "fav_noodle", class: "form-control  w-75" %>
       </div>
-
       <div class="form-inline my-3">
         <label class="font-weight-bold justify-content-start" style="width:20%">メールアドレス</label>
         <%= f.email_field :email, required: true, autocomplete: "email", class: "form-control w-75" %>
       </div>
-
       <div class="form-inline my-3">
         <label class="font-weight-bold justify-content-start" style="width:20%">会員ステータス</label>
         <%= f.radio_button :is_deleted, :false %>
@@ -54,7 +45,6 @@
         <%= f.radio_button :is_deleted, :true %>
         <%= f.label :is_deleted_true, "退会" %>
       </div>
-
       <div>
         <%= f.submit "変更を保存" ,class: "btn btn-success" %>
       </div>
