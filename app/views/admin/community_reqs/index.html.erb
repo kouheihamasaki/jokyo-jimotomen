@@ -7,9 +7,9 @@
     <% @community_reqs.each do |community_req| %>
       <div class="border-top mt-2">
         <h5 class="">
-        <%= link_to admin_community_req_path(community_req), class:'text-reset', style:"text-decoration: underline" do %>
-          <%= community_req.title %>
-        <% end %>
+          <%= link_to admin_community_req_path(community_req), class:'text-reset', style:"text-decoration: underline" do %>
+            <%= community_req.title %>
+          <% end %>
         </h5>
         <% if community_req.update_status == "incomplete" %>
           <p class="font-weight-bold text-success"><%= community_req.update_status_i18n %></p>

@@ -3,25 +3,25 @@
     <%= flash[:notice] %>
   </div>
   <div class="row">
-   <div class="col-md-12">
-    <h2 class="midashi mt-2">東京でも地元麺を食べよう！</h2>
-    <h3 class="mt-2">・記事、コミュニティを検索</h3>
-    <div class="search_form mt-2 col-auto">
-      <%= form_with url: admin_search_path, local: true, method: :get do |f| %>
-        <%= f.text_field :word, :placeholder => "入力して検索する", class: "mb-1 w-50" %>
-        <%= f.select :range, options_for_select([['投稿記事'], ['コミュニティ']]) %>
-        <%= f.submit "検索", class: "btn btn-sm btn-primary ml-2" %>
-      <% end %>
-    </div>
-    <h3 class="mt-2">・人気記事</h3>
-      <% @posts_fav_tops.each do |post| %>
-      <div class="row border-top mt-2">
-        <div class="col-12 col-md-5 col-lg-4 col-xl-3 img-container img">
-          <%= link_to admin_post_path(post.id) do %>
-           <%= image_tag post.get_image(300,200) %>
-          <% end %>
-        </div>
-        <div class="col-12 col-md-7 col-lg-8 col-xl-9">
+    <div class="col-md-12">
+      <h2 class="midashi mt-2">東京でも地元麺を食べよう！</h2>
+      <h3 class="mt-2">・記事、コミュニティを検索</h3>
+      <div class="search_form mt-2 col-auto">
+        <%= form_with url: admin_search_path, local: true, method: :get do |f| %>
+          <%= f.text_field :word, :placeholder => "入力して検索する", class: "mb-1 w-50" %>
+          <%= f.select :range, options_for_select([['投稿記事'], ['コミュニティ']]) %>
+          <%= f.submit "検索", class: "btn btn-sm btn-primary ml-2" %>
+        <% end %>
+      </div>
+      <h3 class="mt-2">・人気記事</h3>
+        <% @posts_fav_tops.each do |post| %>
+        <div class="row border-top mt-2">
+          <div class="col-12 col-md-5 col-lg-4 col-xl-3 img-container img">
+            <%= link_to admin_post_path(post.id) do %>
+              <%= image_tag post.get_image(300,200) %>
+            <% end %>
+          </div>
+          <div class="col-12 col-md-7 col-lg-8 col-xl-9">
           <h5 class="">
             <%= link_to admin_post_path(post.id) do %>
              <%= post.shop_name %>
@@ -42,6 +42,7 @@
               </small></h6>
             </div>
           </div>
+        <!--Raty-->
         <script>
           var topRateElement<%= post.id%> = document.querySelector('#admin-top-top-stars<%= post.id%>');
           var topOpt<%= post.id%> = {
@@ -97,6 +98,7 @@
               </small></h6>
             </div>
           </div>
+        <!--Raty-->
         <script>
           var newRateElement<%= post.id%> = document.querySelector('#top-new-stars<%= post.id%>');
           var newOpt<%= post.id%> = {
@@ -151,6 +153,7 @@
               </small></h6>
             </div>
           </div>
+        <!--Raty-->
         <script>
           var pickRateElement<%= @sample_post.id%> = document.querySelector('#top-pick-stars<%= @sample_post.id%>');
           var pickOpt<%= @sample_post.id%> = {
@@ -182,6 +185,5 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>

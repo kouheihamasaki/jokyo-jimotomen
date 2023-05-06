@@ -2,27 +2,27 @@
   <div class="row">
     <div class="col-md-10 mx-auto my-2">
       <h3 class="my-5 midashi">新しいコミュニティの作成</h3>
-        <div class="ml-3">
-          <div class="mb-5 px-3">
+      <div class="ml-3">
+        <div class="mb-5 px-3">
           <%= form_with model: @community, url: admin_communities_path do |f| %>
-            <div class="row form-group">
-              <%= f.label :"コミュニティタイトル", class: "col-3 mx-auto" %>
-              <%= f.text_field :title, autofocus: true,  autocomplete: "title", class: "col-8 form-control" %>
-            </div>
-            <div class="row form-group">
-              <%= f.label :"コミュニティ説明", class: "col-3 mx-auto" %>
-              <%= f.text_field :introduction, autocomplete: "introduction", class: "col-8 form-control" %>
-            </div>
-            <div class="row form-group">
-              <%= f.label :"都道府県", class: "col-3 mx-auto" %>
-              <%= f.text_field :prefecture, autocomplete: "prefecture", class: "col-8 form-control" %>
-            </div>
-            <div class="text-center">
-              <%= f.submit "  新しく作る  ", class: "btn btn-outline-secondary" %>
-            </div>
-          <% end %>
+          <div class="row form-group">
+            <%= f.label :"コミュニティタイトル", class: "col-3 mx-auto" %>
+            <%= f.text_field :title, autofocus: true,  autocomplete: "title", class: "col-8 form-control" %>
           </div>
+          <div class="row form-group">
+            <%= f.label :"コミュニティ説明", class: "col-3 mx-auto" %>
+            <%= f.text_field :introduction, autocomplete: "introduction", class: "col-8 form-control" %>
+          </div>
+          <div class="row form-group">
+            <%= f.label :"都道府県", class: "col-3 mx-auto" %>
+            <%= f.text_field :prefecture, autocomplete: "prefecture", class: "col-8 form-control" %>
+          </div>
+          <div class="text-center">
+            <%= f.submit "  新しく作る  ", class: "btn btn-outline-secondary" %>
+          </div>
+        <% end %>
         </div>
+      </div>
     </div>
   </div>
 </div>

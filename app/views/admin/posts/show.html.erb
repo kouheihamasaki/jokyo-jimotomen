@@ -19,6 +19,7 @@
         <div id="admin-show-stars"></div>
         <h4 class="font-red">　星<%= @post.star %>ツ！</h4>
       </div>
+      <!--Raty-->
       <script>
         var adminshowRateElement = document.querySelector('#admin-show-stars');
         var adminshowOpt = {
@@ -57,6 +58,7 @@
       </div>
 
       <div id="map" style="height: 400px;"></div>
+      <!--Map-->
       <script>
       function initMap(){
         let mapPosition = {lat: <%= @post.latitude || 0 %> , lng: <%= @post.longitude || 0 %> };
