@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'relationships/followings'
+    get 'relationships/followers'
+  end
   # 管理側
   namespace :admin do
     resources :posts, only: [:show, :index, :destroy] do
