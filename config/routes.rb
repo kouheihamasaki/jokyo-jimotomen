@@ -36,6 +36,9 @@ Rails.application.routes.draw do
      get 'thanks' => 'community_reqs#thanks'
    end
    resource :users,only: [] do #resourceはidとindexをpathから取り除ける
+     resource :relationships, only: [:create, :destroy]
+     get 'followings' => 'relationships#followings', as: 'followings'
+     get 'followers' => 'relationships#followers', as: 'followers'
      get 'my_page' => 'users#show'
      get 'information/edit' => 'users#edit'
      patch 'information' => 'users#update'
