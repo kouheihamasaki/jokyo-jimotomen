@@ -1,8 +1,8 @@
-<div class="container add-font">
+<div class="container add-font-rocknroll">
   <div class="text-align-center mb-1 mt-1 bg-info text-white">
     <%= flash[:notice] %>
   </div>
-  <h2 class="mt-5 midashi"><%= @user.screen_name %>のページ</h2>
+  <h2 class="mt-5 midashi"><%= @user.screen_name %>さんのページ</h2>
   <div class="row">
     <div class="col-12">
       <table class="table table-bordered mt-3">
@@ -92,9 +92,3 @@
     </div>
   </div>
 </div>
-
-<% if current_user.following?(@user) %>
-  <%= link_to "フォロー外す", users_relationship_path(@user.id), method: :delete %>
-<% else %>
-  <%= link_to "フォローする", users_relationships_path(@user.id), method: :post %>
-<% end %>

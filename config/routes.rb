@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'relationships/followings'
-    get 'relationships/followers'
-  end
   # 管理側
   namespace :admin do
     resources :posts, only: [:show, :index, :destroy] do
@@ -36,9 +32,7 @@ Rails.application.routes.draw do
      get 'thanks' => 'community_reqs#thanks'
    end
    resource :users,only: [] do #resourceはidとindexをpathから取り除ける
-     resources :relationships, only: [:show, :create, :destroy]
-     get 'followings' => 'relationships#followings', as: 'followings'
-     get 'followers' => 'relationships#followers', as: 'followers'
+     resources :each_users, only: [:show]
      get 'my_page' => 'users#show'
      get 'information/edit' => 'users#edit'
      patch 'information' => 'users#update'
