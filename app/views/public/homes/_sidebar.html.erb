@@ -24,6 +24,15 @@
       <h6>推し麺　:　<%= user.fav_noodle %></h6>
     </div>
     <div class="add-font-rocknroll mt-3">
+      <h6>フォロー中　:
+      <%= link_to followings_users_path do %>
+        <%= user.followings.count %></h6>
+      <% end %>
+    </div>
+    <div class="add-font-rocknroll mt-3">
+      <h6>フォロワー　:　<%= user.followers.count %></h6>
+    </div>
+    <div class="add-font-rocknroll mt-3">
       <h6>投稿数　:　📃<%= user.post.count %></h6>
     </div>
     <div class="add-font-rocknroll mt-3">
