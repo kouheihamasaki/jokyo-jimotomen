@@ -46,7 +46,9 @@
             <td>投稿者</td>
             <td>
               <%= image_tag @post.user.get_profile_image(40,40) %>
-              <%= @post.user.screen_name %>
+              <%= link_to users_relationship_path(@each_user) do %>
+                <%= @post.user.screen_name %>
+              <% end %>
             </td>
           </tr>
           <tr>

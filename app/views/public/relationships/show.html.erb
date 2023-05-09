@@ -1,0 +1,100 @@
+<div class="container add-font">
+  <div class="text-align-center mb-1 mt-1 bg-info text-white">
+    <%= flash[:notice] %>
+  </div>
+  <h2 class="mt-5 midashi"><%= @user.screen_name %>のページ</h2>
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-bordered mt-3">
+        <tr>
+          <td class="table-info">ユーザー名</td>
+          <td><%= @user.screen_name %></td>
+        </tr>
+        <tr>
+          <td class="table-info">自己紹介文</td>
+          <td><%= @user.introduction %></td>
+        </tr>
+        <tr>
+          <td class="table-info">好きな都道府県</td>
+          <td><%= @user.prefecture %></td>
+        </tr>
+        <tr>
+          <td class="table-info">押し麺類</td>
+          <td><%= @user.fav_noodle %></td>
+        </tr>
+        <tr>
+          <td class="table-info img-container-user img">プロフィール画像</td>
+          <td><%= image_tag @user.get_profile_image(100,100), class: "" %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <h2 class="mt-3 midashi">投稿一覧</h2>
+  <div class="row">
+    <div class="col-12">
+      <% @posts.each do |post| %>
+        <div class="row border-top mt-2">
+          <div class="col-12 col-md-5 col-lg-4 col-xl-3 img-container img">
+            <%= link_to post_path(post.id) do %>
+             <%= image_tag post.get_image(300,200) %>
+            <% end %>
+          </div>
+          <div class="col-12 col-md-7 col-lg-8 col-xl-9">
+            <h5 class="">
+              <%= link_to post_path(post.id) do %>
+               <%= post.shop_name %>
+              <% end %>
+            </h5>
+            <p class="font-weight-bold lead"><%= post.title %></p>
+            <div class="row ml-2">
+              <div class="col-5">
+                <div class="row">
+                  <div id="index-stars<%= post.id%>"></div>
+                  <h5 class="font-red">　星<%= post.star %>ツ！</h5>
+                </div>
+              </div>
+              <div class="col-5 offset-md-2">
+                <h6 class=""><small class="text-muted text-right">
+                  <%= image_tag post.user.get_profile_image(40,40) %>
+                  <%= post.user.screen_name %>さんの投稿
+                </small></h6>
+              </div>
+            </div>
+            <!--Raty-->
+            <script>
+              var showRateElement<%= post.id%> = document.querySelector('#index-stars<%= post.id%>');
+              var showOpt<%= post.id%> = {
+              starOn: "<%= asset_path('star-on.png') %>",
+              starOff: "<%= asset_path('star-off.png') %>",
+              scoreName: 'post[star]',
+              score: "<%= post.star %>",
+              readOnly: true
+              };
+              window.raty(showRateElement<%= post.id%>, showOpt<%= post.id%>);
+            </script>
+            <div class="add-font-rocknroll">
+              <h6><%= post.body.truncate(39) %></h6>
+              <div class="tag-input">
+                <h6 class="">
+                  <% post.tags.each do |tag| %>
+                    <span class="tag-dez"><%= tag.name %></span>
+                  <% end %>
+                  <small class="text-muted text-right">💛<%= post.favorite.count %></small>
+                </h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <div>
+        <%= paginate @posts %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% if current_user.following?(@user) %>
+  <%= link_to "フォロー外す", users_relationship_path(@user.id), method: :delete %>
+<% else %>
+  <%= link_to "フォローする", users_relationships_path(@user.id), method: :post %>
+<% end %>
