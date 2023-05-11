@@ -26,12 +26,12 @@ ex) 博多豚骨ラーメン・愛知味噌煮込みうどん・山形冷たい�
 * 新しい麺類に興味をもつきっかけに
 
 ## 設計書
-- [Ul flows](https://drive.google.com/file/d/1hLhHS-7BSmVVqfgfaPFu_JrZS_Dzidrc/view?usp=sharing){:target="_blank"}
-- [テーブル定義書](https://docs.google.com/spreadsheets/d/1QuqncXvnUsldmLhmMuWngtCDzAqda2hqsmP3NMpP8K0/edit?usp=sharing){:target="_blank"}
-- [アプリケーション詳細設計書](https://docs.google.com/spreadsheets/d/1J0atSE5oLlJpWNxAWzLpRH4UasSJi3fgvbVtSDLb4yw/edit?usp=sharing){:target="_blank"}
-- [ER図](https://drive.google.com/file/d/1RI6oajmr6M0W6lo1gTIePwTfHq2wiYLi/view?usp=sharing){:target="_blank"}
-- [インフラ設計書](https://docs.google.com/spreadsheets/d/1DBqheUBzC4yjx2xSUdaRcr6dLniOMT0DKzAd6mjWrM0/edit?usp=sharing){:target="_blank"}
-- [AWS構成図](https://drive.google.com/file/d/1RAfNmBxTyI_PlC3GvegNGArrDEBbtCGN/view?usp=sharing){:target="_blank"}
+- [Ul flows](https://drive.google.com/file/d/1hLhHS-7BSmVVqfgfaPFu_JrZS_Dzidrc/view?usp=sharing)
+- [テーブル定義書](https://docs.google.com/spreadsheets/d/1QuqncXvnUsldmLhmMuWngtCDzAqda2hqsmP3NMpP8K0/edit?usp=sharing)
+- [アプリケーション詳細設計書](https://docs.google.com/spreadsheets/d/1J0atSE5oLlJpWNxAWzLpRH4UasSJi3fgvbVtSDLb4yw/edit?usp=sharing)
+- [ER図](https://drive.google.com/file/d/1RI6oajmr6M0W6lo1gTIePwTfHq2wiYLi/view?usp=sharing)
+- [インフラ設計書](https://docs.google.com/spreadsheets/d/1DBqheUBzC4yjx2xSUdaRcr6dLniOMT0DKzAd6mjWrM0/edit?usp=sharing)
+- [AWS構成図](https://drive.google.com/file/d/1RAfNmBxTyI_PlC3GvegNGArrDEBbtCGN/view?usp=sharing)
 
 ## 開発環境
 - OS：Linux(CentOS)
