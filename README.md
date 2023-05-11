@@ -26,7 +26,10 @@ ex) 博多豚骨ラーメン・愛知味噌煮込みうどん・山形冷たい�
 * 新しい麺類に興味をもつきっかけに
 
 ## 設計書
-
+[侍エンジニアブログ](https://www.sejuku.net/blog/){:target="_blank"}
+[侍エンジニアブログ](https://www.sejuku.net/blog/){:target="_blank"}
+[侍エンジニアブログ](https://www.sejuku.net/blog/){:target="_blank"}
+[侍エンジニアブログ](https://www.sejuku.net/blog/){:target="_blank"}
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -35,4 +38,24 @@ ex) 博多豚骨ラーメン・愛知味噌煮込みうどん・山形冷たい�
 - JSライブラリ：jQuery
 - API：Google Maps API
 - IDE：Cloud9
+
+
+## 機能リスト
+- マイページログイン
+- マイページログアウト
+- ゲストログイン
+- 退会機能
+- 投稿機能
+- 投稿検索機能（タグ検索）
+- 投稿検索機能（ワード検索）
+- レビュー機能（Raty）
+- マップ表示機能（Google maps API）
+- コメント機能（非同期通信）
+- いいね機能（非同期通信）
+- 管理者ログイン機能、管理機能
+- コミュニティ機能
+また、AWSにてインフラを構築しています。
+[侍エンジニアブログ](https://www.sejuku.net/blog/){:target="_blank"}
+[侍エンジニアブログ](https://www.sejuku.net/blog/){:target="_blank"}
+
 
