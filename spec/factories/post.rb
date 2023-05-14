@@ -7,6 +7,9 @@ FactoryBot.define do
     adress { Faker::Lorem.characters(number:10) }
     title { Faker::Lorem.characters(number:10) }
     body { Faker::Lorem.characters(number:30) }
-    image { Faker::LoremPixel.image(size: "400x400") }
+    
+    after(:build) do |post|
+      post.image.attach(io: File.open('spec/fixtures/test_image.png'), filename: 'test_image.png', content_type: 'image/png')
+    end
   end
 end

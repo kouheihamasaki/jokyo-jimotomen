@@ -4,7 +4,11 @@ require 'rails_helper'
 # require 'fixture_file_upload'　
 
 describe 'モデルのテスト' do
-  it "有効な投稿内容の場合は保存されるか" do
-    expect(FactoryBot.build(:post)).to be_valid
+  context "有効な投稿内容の場合は保存されるか" do
+    example "データが保存されること" do
+      user = create(:user)
+      post = create(:post, user: user)
+      expect(post).to be_present
+    end
   end
 end

@@ -10,5 +10,6 @@ FactoryBot.define do
     fav_noodle { Faker::Lorem.characters(number:10) }
     email {Faker::Internet.email}
     is_deleted { Faker::Boolean.boolean }
+    password { Faker::Lorem.characters(number:10)}
   end
 end
