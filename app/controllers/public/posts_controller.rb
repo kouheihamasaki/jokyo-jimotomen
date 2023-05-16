@@ -36,7 +36,7 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @user = current_user
-    @each_user = User.find(params[:id])
+    @each_user = @post.user
     @post_comment = PostComment.new
 
     # サイドバー部分
